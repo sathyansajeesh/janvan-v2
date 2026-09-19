@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JANVAN V2</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7f2;color:#173b2b}
+header{background:#123d2b;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:bold}.tag{font-size:12px;opacity:.8}
+nav button{background:none;border:0;color:white;margin:4px;cursor:pointer}
+main{max-width:1200px;margin:auto;padding:35px 20px}
+.hero{background:white;border-radius:20px;padding:40px;box-shadow:0 4px 20px #0001}
+h1{font-size:42px;margin:10px 0}.green{color:#39915d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:25px}
+.card{background:white;padding:22px;border-radius:16px;box-shadow:0 3px 15px #0001}
+.card h3{margin-top:0}.metric{font-size:30px;font-weight:bold}
+button.primary{background:#246b46;color:white;border:0;padding:12px 20px;border-radius:10px;cursor:pointer}
+button.secondary{background:white;border:1px solid #246b46;color:#246b46;padding:11px 18px;border-radius:10px;cursor:pointer}
+.badge{display:inline-block;background:#e2f2e6;padding:5px 10px;border-radius:20px;font-size:12px}
+.page{display:none}.active{display:block}
+.module{cursor:pointer;transition:.2s}.module:hover{transform:translateY(-3px)}
+footer{text-align:center;padding:30px;color:#667}
+</style>
+</head>
+
+<body>
+
+<header>
+<div><div class="logo">🌿 JANVAN</div><div class="tag">People • Nature • Prosperity</div></div>
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('passport')">Passport</button>
+<button onclick="show('market')">Marketplace</button>
+<button onclick="show('nature')">Nature & MRV</button>
+</nav>
+</header>
+
+<main>
+
+<section id="home" class="page active">
+<div class="hero">
+<span class="badge">JANVAN V2 • DEMO</span>
+<h1>Your Farm. Your <span class="green">Progress.</span> Your Value.</h1>
+<p>One digital infrastructure connecting farmers, land, operations, markets, finance and nature.</p>
+<button class="primary" onclick="show('dashboard')">Enter Farm</button>
+</div>
+</section>
+
+<section id="dashboard" class="page">
+<h2>Farm Home</h2>
+<p><b>Rajan Kumar</b> • Rajan's Green Acres</p>
+<p>📍 Devanahalli, Karnataka • 4.5 acres • Wheat</p>
+
+<div class="grid">
+<div class="card module" onclick="show('passport')"><h3>🌱 Farm Passport</h3><p>Digital identity and farm records.</p></div>
+<div class="card module" onclick="show('ai')"><h3>🤖 AI Intelligence</h3><p>Tasks, crop guidance and alerts.</p></div>
+<div class="card module" onclick="show('operations')"><h3>🚜 Operations</h3><p>Record farming activities.</p></div>
+<div class="card module" onclick="show('market')"><h3>🛒 Marketplace</h3><p>Inputs, services and produce.</p></div>
+<div class="card module" onclick="show('finance')"><h3>💰 Finance & Schemes</h3><p>Explore finance and government schemes.</p></div>
+<div class="card module" onclick="show('nature')"><h3>🌳 Nature & MRV</h3><p>Measure positive environmental action.</p></div>
+</div>
+
+<div class="grid">
+<div class="card"><div class="metric">72</div><p>Living Farm Score</p></div>
+<div class="card"><div class="metric">18</div><p>Practices Logged</p></div>
+<div class="card"><div class="metric">4.2 t</div><p>CO₂e Pipeline</p></div>
+</div>
+</section>
+
+<section id="passport" class="page">
+<h2>🌱 Farm Passport</h2>
+<div class="card">
+<h3>JANVAN Farm ID</h3>
+<div class="metric">JVN-KA-2026-27425</div>
+<p>Verified • Demo</p>
+<p>Land: 4.5 acres</p><p>Crop: Wheat</p><p>Season: Kharif</p>
+</div>
+</section>
+
+<section id="ai" class="page">
+<h2>🤖 AI Farm Intelligence</h2>
+<div class="grid">
+<div class="card"><h3>🌾 Crop Advice</h3><p>Sowing window and crop planning guidance.</p></div>
+<div class="card"><h3>💧 Water</h3><p>Monitor irrigation needs and soil moisture.</p></div>
+<div class="card"><h3>🌿 Soil</h3><p>Improve soil health using compost and organic practices.</p></div>
+</div>
+</section>
+
+<section id="operations" class="page">
+<h2>🚜 Farm Operations</h2>
+<div class="grid">
+<div class="card"><h3>Soil Preparation</h3><button class="secondary">+ Record</button></div>
+<div class="card"><h3>Planting</h3><button class="secondary">+ Record</button></div>
+<div class="card"><h3>Irrigation</h3><button class="secondary">+ Record</button></div>
+<div class="card"><h3>Harvest</h3><button class="secondary">+ Record</button></div>
+</div>
+</section>
+
+<section id="market" class="page">
+<h2>🛒 JANVAN Marketplace</h2>
+<p>Connect farms with products, services and buyers.</p>
+<div class="grid">
+<div class="card"><h3>🌱 Seeds & Planting Material</h3><p>Seeds • Saplings • Tissue culture</p></div>
+<div class="card"><h3>🧪 Farm Inputs</h3><p>Bio-fertilizers • Compost • Soil products</p></div>
+<div class="card"><h3>🚜 Equipment & Services</h3><p>Machinery • Farm services • Labour</p></div>
+<div class="card"><h3>🥭 Produce Marketplace</h3><p>Farmers → Buyers → Institutions</p></div>
+</div>
+</section>
+
+<section id="finance" class="page">
+<h2>💰 Finance & Schemes</h2>
+<div class="grid">
+<div class="card"><h3>Government Schemes</h3><p>Discover eligible agricultural schemes.</p></div>
+<div class="card"><h3>Crop Insurance</h3><p>Insurance information and eligibility.</p></div>
+<div class="card"><h3>Farm Finance</h3><p>Explore financing options through eligible partners.</p></div>
+</div>
+</section>
+
+<section id="nature" class="page">
+<h2>🌳 Nature & MRV</h2>
+<div class="card">
+<h3>SAVE → IMPROVE → MEASURE → VERIFY → EARN</h3>
+<p>Record nature-positive practices and build a measurable Farm Nature Profile.</p>
+<div class="grid">
+<div><b>18</b><br>Practices</div>
+<div><b>6</b><br>MRV Records</div>
+<div><b>4.2 t</b><br>CO₂e Pipeline</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>JANVAN V2 • Interactive Prototype • Demo Data</footer>
+
+<script>
+function show(id){
+document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+window.scrollTo(0,0);
+}
+</script>
+
+</body>
+</html>
