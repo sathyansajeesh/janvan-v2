@@ -1,146 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>JANVAN V2</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7f2;color:#173b2b}
-header{background:#123d2b;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:24px;font-weight:bold}.tag{font-size:12px;opacity:.8}
-nav button{background:none;border:0;color:white;margin:4px;cursor:pointer}
-main{max-width:1200px;margin:auto;padding:35px 20px}
-.hero{background:white;border-radius:20px;padding:40px;box-shadow:0 4px 20px #0001}
-h1{font-size:42px;margin:10px 0}.green{color:#39915d}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:25px}
-.card{background:white;padding:22px;border-radius:16px;box-shadow:0 3px 15px #0001}
-.card h3{margin-top:0}.metric{font-size:30px;font-weight:bold}
-button.primary{background:#246b46;color:white;border:0;padding:12px 20px;border-radius:10px;cursor:pointer}
-button.secondary{background:white;border:1px solid #246b46;color:#246b46;padding:11px 18px;border-radius:10px;cursor:pointer}
-.badge{display:inline-block;background:#e2f2e6;padding:5px 10px;border-radius:20px;font-size:12px}
-.page{display:none}.active{display:block}
-.module{cursor:pointer;transition:.2s}.module:hover{transform:translateY(-3px)}
-footer{text-align:center;padding:30px;color:#667}
-</style>
-</head>
-
-<body>
-
-<header>
-<div><div class="logo">🌿 JANVAN</div><div class="tag">People • Nature • Prosperity</div></div>
-<nav>
-<button onclick="show('home')">Home</button>
-<button onclick="show('passport')">Passport</button>
-<button onclick="show('market')">Marketplace</button>
-<button onclick="show('nature')">Nature & MRV</button>
-</nav>
-</header>
-
-<main>
-
-<section id="home" class="page active">
-<div class="hero">
-<span class="badge">JANVAN V2 • DEMO</span>
-<h1>Your Farm. Your <span class="green">Progress.</span> Your Value.</h1>
-<p>One digital infrastructure connecting farmers, land, operations, markets, finance and nature.</p>
-<button class="primary" onclick="show('dashboard')">Enter Farm</button>
-</div>
-</section>
-
-<section id="dashboard" class="page">
-<h2>Farm Home</h2>
-<p><b>Rajan Kumar</b> • Rajan's Green Acres</p>
-<p>📍 Devanahalli, Karnataka • 4.5 acres • Wheat</p>
-
-<div class="grid">
-<div class="card module" onclick="show('passport')"><h3>🌱 Farm Passport</h3><p>Digital identity and farm records.</p></div>
-<div class="card module" onclick="show('ai')"><h3>🤖 AI Intelligence</h3><p>Tasks, crop guidance and alerts.</p></div>
-<div class="card module" onclick="show('operations')"><h3>🚜 Operations</h3><p>Record farming activities.</p></div>
-<div class="card module" onclick="show('market')"><h3>🛒 Marketplace</h3><p>Inputs, services and produce.</p></div>
-<div class="card module" onclick="show('finance')"><h3>💰 Finance & Schemes</h3><p>Explore finance and government schemes.</p></div>
-<div class="card module" onclick="show('nature')"><h3>🌳 Nature & MRV</h3><p>Measure positive environmental action.</p></div>
-</div>
-
-<div class="grid">
-<div class="card"><div class="metric">72</div><p>Living Farm Score</p></div>
-<div class="card"><div class="metric">18</div><p>Practices Logged</p></div>
-<div class="card"><div class="metric">4.2 t</div><p>CO₂e Pipeline</p></div>
-</div>
-</section>
-
-<section id="passport" class="page">
-<h2>🌱 Farm Passport</h2>
-<div class="card">
-<h3>JANVAN Farm ID</h3>
-<div class="metric">JVN-KA-2026-27425</div>
-<p>Verified • Demo</p>
-<p>Land: 4.5 acres</p><p>Crop: Wheat</p><p>Season: Kharif</p>
-</div>
-</section>
-
-<section id="ai" class="page">
-<h2>🤖 AI Farm Intelligence</h2>
-<div class="grid">
-<div class="card"><h3>🌾 Crop Advice</h3><p>Sowing window and crop planning guidance.</p></div>
-<div class="card"><h3>💧 Water</h3><p>Monitor irrigation needs and soil moisture.</p></div>
-<div class="card"><h3>🌿 Soil</h3><p>Improve soil health using compost and organic practices.</p></div>
-</div>
-</section>
-
-<section id="operations" class="page">
-<h2>🚜 Farm Operations</h2>
-<div class="grid">
-<div class="card"><h3>Soil Preparation</h3><button class="secondary">+ Record</button></div>
-<div class="card"><h3>Planting</h3><button class="secondary">+ Record</button></div>
-<div class="card"><h3>Irrigation</h3><button class="secondary">+ Record</button></div>
-<div class="card"><h3>Harvest</h3><button class="secondary">+ Record</button></div>
-</div>
-</section>
-
-<section id="market" class="page">
-<h2>🛒 JANVAN Marketplace</h2>
-<p>Connect farms with products, services and buyers.</p>
-<div class="grid">
-<div class="card"><h3>🌱 Seeds & Planting Material</h3><p>Seeds • Saplings • Tissue culture</p></div>
-<div class="card"><h3>🧪 Farm Inputs</h3><p>Bio-fertilizers • Compost • Soil products</p></div>
-<div class="card"><h3>🚜 Equipment & Services</h3><p>Machinery • Farm services • Labour</p></div>
-<div class="card"><h3>🥭 Produce Marketplace</h3><p>Farmers → Buyers → Institutions</p></div>
-</div>
-</section>
-
-<section id="finance" class="page">
-<h2>💰 Finance & Schemes</h2>
-<div class="grid">
-<div class="card"><h3>Government Schemes</h3><p>Discover eligible agricultural schemes.</p></div>
-<div class="card"><h3>Crop Insurance</h3><p>Insurance information and eligibility.</p></div>
-<div class="card"><h3>Farm Finance</h3><p>Explore financing options through eligible partners.</p></div>
-</div>
-</section>
-
-<section id="nature" class="page">
-<h2>🌳 Nature & MRV</h2>
-<div class="card">
-<h3>SAVE → IMPROVE → MEASURE → VERIFY → EARN</h3>
-<p>Record nature-positive practices and build a measurable Farm Nature Profile.</p>
-<div class="grid">
-<div><b>18</b><br>Practices</div>
-<div><b>6</b><br>MRV Records</div>
-<div><b>4.2 t</b><br>CO₂e Pipeline</div>
-</div>
-</div>
-</section>
-
-</main>
-
-<footer>JANVAN V2 • Interactive Prototype • Demo Data</footer>
-
+:root{--g:#123d32;--g2:#2f8a59;--bg:#f4f7f4;--card:#fff;--line:#dfe7e1;--muted:#66756e;--gold:#a87820}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#173b2b}button,input,select{font:inherit}button{cursor:pointer}.top{position:sticky;top:0;z-index:10;background:var(--g);color:#fff;padding:14px 4%;display:flex;align-items:center;gap:22px}.brand{font-weight:800;font-size:22px}.brand small{display:block;font-size:10px;font-weight:400;opacity:.75;margin-top:3px}.nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}.nav button{background:transparent;border:0;color:#fff;padding:9px;border-radius:8px}.nav button:hover{background:#ffffff18}.wrap{max-width:1240px;margin:auto;padding:25px 18px 55px}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 20px #123d3208}.hero{padding:42px;background:linear-gradient(135deg,#fff,#eaf5ee)}.hero h1{font-size:clamp(38px,6vw,62px);line-height:1;margin:14px 0}.hero p{max-width:820px;color:var(--muted);font-size:17px;line-height:1.55}.badge,.tag{display:inline-block;background:#e7f2eb;color:var(--g);border-radius:999px;padding:6px 10px;font-size:11px;font-weight:700}.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--g);color:#fff;font-weight:700}.btn.alt{background:#e8f1ec;color:var(--g)}.btn.gold{background:var(--gold)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}.card{padding:19px}.click{cursor:pointer;transition:.15s}.click:hover{transform:translateY(-2px)}.icon{font-size:28px}.muted{color:var(--muted);font-size:14px;line-height:1.5}.title{margin:27px 0 13px;display:flex;align-items:end;justify-content:space-between}.title h2{margin:0}.head{margin-bottom:20px}.head h2{font-size:31px;margin:12px 0 5px}.notice{background:#fff8e7;border:1px solid #ead79f;border-radius:12px;padding:13px;font-size:13px;color:#6c531d}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:15px}.metric{font-size:28px;font-weight:800;margin:6px 0}.status{color:#2c7b4c;font-weight:700}.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:15px 0}.step{text-align:center;background:#eaf2ed;padding:11px 3px;border-radius:9px;font-size:11px;font-weight:700}.step.on{background:var(--g);color:#fff}.table{overflow:auto;border:1px solid var(--line);border-radius:13px;background:#fff}.table table{border-collapse:collapse;width:100%}.table th,.table td{text-align:left;padding:12px;border-bottom:1px solid var(--line);white-space:nowrap}.table th{background:#eff5f1;font-size:12px}.search{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}.filters{display:flex;gap:7px;overflow:auto;padding:10px 0}.filters button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 12px;white-space:nowrap}.filters .on{background:var(--g);color:#fff}.product-img{height:135px;border-radius:12px;background:#eaf5ee;display:flex;align-items:center;justify-content:center;font-size:55px}.price{font-size:22px;font-weight:800;margin:7px 0}.rating{color:#9a711e;font-size:13px}.form{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}.field input,.field select{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;background:#fff}.full{grid-column:1/-1}.map{height:220px;border-radius:15px;background:linear-gradient(145deg,#dff0e3,#b9dbbf);position:relative;overflow:hidden}.map:before{content:"";position:absolute;inset:28px 15% 30px 18%;background:#82bd91;clip-path:polygon(4% 20%,35% 2%,68% 18%,96% 8%,88% 75%,55% 96%,15% 80%)}.map:after{content:"FIELD BOUNDARY • DEMO SATELLITE VIEW";position:absolute;top:12px;left:12px;background:#ffffffdd;padding:7px;border-radius:7px;font-size:10px;font-weight:700}.modal{display:none;position:fixed;inset:0;background:#0007;z-index:30;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalbox{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:17px;padding:23px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+@media(max-width:760px){.nav{display:none}.wrap{padding:17px 12px 45px}.hero{padding:25px}.kpis{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:repeat(3,1fr)}.form{grid-template-columns:1fr}.full{grid-column:auto}}
+</style></head>
+<body><header class="top"><div class="brand">🌱 JANVAN<small>People • Nature • Prosperity</small></div><nav class="nav"><button onclick="go('home')">Home</button><button onclick="go('farm')">Farm</button><button onclick="go('passport')">Passport</button><button onclick="go('operations')">Operations</button><button onclick="go('market')">Marketplace</button><button onclick="go('nature')">Nature & MRV</button><button onclick="go('connect')">Connect</button></nav></header><main class="wrap" id="app"></main><div class="modal" id="modal"><div class="modalbox" id="modalbox"></div></div><footer class="footer">JANVAN V2 • Interactive Prototype • Demo Data • No real payments, loans, carbon credits, verification or government approvals.</footer>
 <script>
-function show(id){
-document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-window.scrollTo(0,0);
-}
-</script>
-
-</body>
-</html>
+const F={person:'Rajan Kumar',farm:"Rajan's Green Acres",loc:'Devanahalli, Bengaluru Rural, Karnataka',area:'4.5 acres',crop:'Wheat',season:'Kharif',id:'JVN-KA-2026-27425'};
+const P=[['🍌','Nendran Banana Tissue Culture','₹18 / plant','Seeds & Planting','4.7'],['🧪','Bio-Fertilizer — 1 Litre','₹280 / bottle','Fertilizers & Bio-inputs','4.5'],['💧','Drip Irrigation Kit — 1 Acre','₹8,500 / kit','Irrigation & Fertigation','4.6'],['🌱','Organic Compost — 25 kg','₹420 / bag','Fertilizers & Bio-inputs','4.8'],['🛠️','Rechargeable Farm Sprayer','₹3,200 / unit','Farm Tools','4.4'],['🌿','Mulching Sheet — 100 GSM','₹75 / m²','Farm Infrastructure','4.6']];let cart=[];let cat='All';let mode='buy';
+function back(){return '<button class="btn alt" onclick="go(\'farm\')">← Farm Home</button>'}function head(t,s){return '<div class="head">'+back()+'<h2>'+t+'</h2><div class="muted">'+s+'</div></div>'}function go(p){if(p==='home')home();else if(p==='farm')farm();else if(p==='passport')passport();else if(p==='operations')ops();else if(p==='market')market();else if(p==='nature')nature();else if(p==='connect')connect();else if(p==='profile')profile();else if(p==='ai')ai();else if(p==='finance')finance();scrollTo(0,0)}
+function home(){app.innerHTML='<section class="hero"><span class="badge">JANVAN V2 • DEMO</span><h1>Your Farm. Your <span style="color:#39915d">Progress.</span> Your Value.</h1><p>One digital infrastructure connecting farmers, land, operations, markets, finance and nature.</p><button class="btn" onclick="go(\'farm\')">Enter Farm</button></section><div class="timeline">'+['IDENTIFY','OPERATE','IMPROVE','MEASURE','CONNECT','VALUE'].map((x,i)=>'<div class="step '+(i<2?'on':'')+'">'+x+'</div>').join('')+'</div><div class="title"><h2>JANVAN Ecosystem</h2></div><div class="grid">'+[['🌱','Farm Identity','Digital identity for farmers, tenants, landowners and farms.','farm'],['📘','Farm Passport','Living farm identity, records and evidence.','passport'],['🤖','AI Farm Intelligence','Crop, water, soil and planning support.','ai'],['🚜','Farm Operations','Planting, irrigation, fertigation, crop care and harvest.','operations'],['🛒','Marketplace','Buy inputs and sell farm produce.','market'],['🌳','Nature & MRV','Measure nature-positive practices and outcomes.','nature'],['💰','Finance & Schemes','Scheme discovery and finance pathways.','finance'],['🤝','Connect','Buyers, FPOs, experts and services.','connect']].map(x=>'<div class="card click" onclick="go(\''+x[3]+'\')"><div class="icon">'+x[0]+'</div><h3>'+x[1]+'</h3><div class="muted">'+x[2]+'</div></div>').join('')+'</div>'}
+function farm(){app.innerHTML='<div class="head"><h2>🏠 Farm Home</h2><div class="muted">'+F.person+' • '+F.farm+' • '+F.loc+'</div></div><div class="notice"><b>DEMO FARM:</b> illustrative data for product demonstration. Production Farm IDs require appropriate identity, consent and verification processes.</div><div class="kpis">'+[['Living Farm Score','72 / 100','Demo'],['Crop',F.crop,F.season],['Land',F.area,'Mapped • Demo'],['Farm ID',F.id,'Demo identity']].map(x=>'<div class="card"><div class="muted">'+x[0]+'</div><div class="metric">'+x[1]+'</div><div class="status" style="font-size:12px">'+x[2]+'</div></div>').join('')+'</div><div class="title"><h2>Farm Control Centre</h2></div><div class="grid">'+[['📘','Farm Passport','Identity, relationships and evidence.','passport'],['🤖','AI Intelligence','Crop, water, soil and alerts.','ai'],['🚜','Farm Operations','All field activities and records.','operations'],['🛒','Marketplace','Buy farm needs or sell produce.','market'],['💰','Finance & Schemes','Explore relevant support pathways.','finance'],['🌳','Nature & MRV','SAVE → IMPROVE → MEASURE → VERIFY → EARN.','nature'],['🤝','Connect','Buyers, FPOs and service partners.','connect'],['👤','Profile & Consent','Profile and data-sharing controls.','profile']].map(x=>'<div class="card click" onclick="go(\''+x[3]+'\')"><div class="icon">'+x[0]+'</div><h3>'+x[1]+'</h3><div class="muted">'+x[2]+'</div></div>').join('')+'</div>'}
+function passport(){app.innerHTML=head('📘 Farm Passport','A living digital identity and evidence record for the farm.')+'<div class="grid"><div class="card"><span class="badge">JANVAN FARM ID • DEMO</span><h2>'+F.id+'</h2><div class="status">● Demo identity</div><p>Farmer: <b>'+F.person+'</b><br>Farm: '+F.farm+'<br>Location: '+F.loc+'<br>Land: '+F.area+'<br>Crop: '+F.crop+'<br>Season: '+F.season+'</p></div><div class="card"><h3>Land Relationship</h3><p class="muted">JANVAN supports farmer, tenant/sharecropper and landowner relationships without assuming that the cultivator owns the land.</p><span class="tag">Farmer • Demo</span> <span class="tag">Consent required</span></div></div><div class="title"><h2>Farm Evidence</h2></div><div class="grid">'+['🗺️ Field boundary','🌾 Crop records','📝 Practice records','🧪 Soil observations','💧 Water resources','🏗️ Infrastructure'].map(x=>'<div class="card"><h3>'+x+'</h3><div class="muted">Demo evidence pathway</div></div>').join('')+'</div>'}
+function ops(){let a=[['🪱','Soil Preparation'],['🌱','Planting'],['💧','Irrigation'],['🧪','Fertigation'],['🌿','Fertilization / Bio-inputs'],['🐛','Pest & Disease'],['🌾','Weeding / Mulching'],['✂️','Crop Care'],['🧺','Harvest'],['📦','Post-Harvest'],['🚚','Transport'],['📷','Evidence / Photo']];app.innerHTML=head('🚜 Farm Operations','Record what happens on the farm and connect it to the Farm Passport and MRV.')+'<div class="grid">'+a.map(x=>'<div class="card"><div class="icon">'+x[0]+'</div><h3>'+x[1]+'</h3><p class="muted">Record date, field, quantity, method, notes and evidence.</p><button class="btn alt" onclick="record(\''+x[1]+'\')">+ Record</button></div>').join('')+'</div><div class="title"><h2>Recent Activity</h2></div><div class="table"><table><tr><th>Date</th><th>Activity</th><th>Field</th><th>Status</th></tr><tr><td>18 Sep 2026</td><td>Soil preparation</td><td>Field A</td><td class="status">Recorded</td></tr><tr><td>17 Sep 2026</td><td>Irrigation</td><td>Field A</td><td class="status">Recorded</td></tr><tr><td>15 Sep 2026</td><td>Compost application</td><td>Field A</td><td class="status">Recorded</td></tr></table></div>'}
+function record(t){modalbox.innerHTML='<h2>Record: '+t+'</h2><p class="muted">Demo record. Production data will be linked to Farm Passport, geospatial evidence and MRV where applicable.</p><div class="form"><div class="field"><label>Date</label><input type="date" value="2026-09-20"></div><div class="field"><label>Field / Area</label><input value="Field A — Demo"></div><div class="field"><label>Quantity / Measurement</label><input placeholder="e.g. 500 L, 25 kg"></div><div class="field"><label>Method</label><input placeholder="Method / equipment"></div><div class="field full"><label>Notes</label><input placeholder="Observation"></div></div><div class="row" style="margin-top:17px"><button class="btn" onclick="closeM();alert(\'Demo record saved.\')">Save Record</button><button class="btn alt" onclick="closeM()">Cancel</button></div>';modal.classList.add('show')}
+function market(){app.innerHTML=head('🛒 JANVAN Marketplace','Buy what your farm needs. Sell what your farm produces.')+'<div class="row" style="margin-bottom:13px"><button class="btn '+(mode==='buy'?'':'alt')+'" onclick="mode=\'buy\';market()">🛒 Buy</button><button class="btn '+(mode==='sell'?'':'alt')+'" onclick="mode=\'sell\';market()">🌾 Sell Produce</button><button class="btn alt" onclick="cartView()">🛍️ Cart ('+cart.length+')</button><button class="btn alt" onclick="orders()">📦 My Orders</button></div>'+(mode==='buy'?'<input class="search" id="q" placeholder="🔎 Search seeds, fertilizers, irrigation, equipment..." oninput="renderP()"><div class="filters">'+['All','Seeds & Planting','Fertilizers & Bio-inputs','Irrigation & Fertigation','Farm Tools','Farm Infrastructure'].map(c=>'<button class="'+(cat===c?'on':'')+'" onclick="cat=\''+c+'\';market()">'+c+'</button>').join('')+'</div><div class="grid" id="plist">'+products()+'</div>':sell())}
+function products(){let q=(document.getElementById('q')?.value||'').toLowerCase();return P.filter(p=>(cat==='All'||p[3]===cat)&&p[1].toLowerCase().includes(q)).map((p,i)=>'<div class="card"><div class="product-img">'+p[0]+'</div><div class="muted" style="margin-top:9px">'+p[3]+'</div><h3>'+p[1]+'</h3><div class="rating">★★★★★ '+p[4]+'</div><div class="price">'+p[2]+'</div><div class="muted">Demo seller • Delivery to farm • Available</div><button class="btn" style="margin-top:12px" onclick="add('+i+')">Add to Cart</button> <button class="btn alt" onclick="viewP('+i+')">View</button></div>').join('')}
+function renderP(){document.getElementById('plist').innerHTML=products()}function add(i){cart.push(P[i]);market();alert('Added to JANVAN demo cart.')}
+function viewP(i){let p=P[i];modalbox.innerHTML='<div class="product-img">'+p[0]+'</div><h2>'+p[1]+'</h2><div class="rating">★★★★★ '+p[4]+'</div><h2>'+p[2]+'</h2><p class="muted">Seller, specifications, delivery, reviews and Q&A will appear in the production marketplace.</p><button class="btn" onclick="add('+i+');closeM()">Add to Cart</button> <button class="btn alt" onclick="closeM()">Close</button>';modal.classList.add('show')}
+function sell(){return '<div class="hero" style="padding:25px"><span class="badge">FARMER SELLER</span><h2>🌾 Sell Your Produce</h2><p>List harvest for consumers, traders, processors, retailers, restaurants and institutional buyers.</p></div><div class="card"><h2>Create Produce Listing</h2><div class="form"><div class="field"><label>Produce</label><select><option>Nendran Banana</option><option>Wheat</option><option>Coconut</option><option>Vegetables</option><option>Spices</option></select></div><div class="field"><label>Quantity</label><input value="2500"></div><div class="field"><label>Unit</label><select><option>kg</option><option>tonnes</option><option>boxes</option></select></div><div class="field"><label>Expected price</label><input value="42"></div><div class="field"><label>Grade</label><select><option>A</option><option>B</option><option>C</option></select></div><div class="field"><label>Available from</label><input type="date" value="2026-10-05"></div><div class="field full"><label>Farm / delivery location</label><input value="'+F.loc+'"></div></div><button class="btn" style="margin-top:17px" onclick="alert(\'Demo produce listing published.\')">Publish Listing</button></div>'}
+function cartView(){modalbox.innerHTML='<h2>🛍️ Cart</h2>'+(cart.length?cart.map(p=>'<div class="card" style="margin:8px 0"><b>'+p[0]+' '+p[1]+'</b><div>'+p[2]+'</div></div>').join(''):'<p class="muted">Your cart is empty.</p>')+'<button class="btn" onclick="closeM();alert(\'Demo checkout — no real payment is processed.\')">Proceed to Checkout</button> <button class="btn alt" onclick="closeM()">Close</button>';modal.classList.add('show')}
+function orders(){modalbox.innerHTML='<h2>📦 My Orders</h2><div class="card"><b>Outgoing — Drip Irrigation Kit</b><p class="muted">₹8,500 • Demo In Transit</p></div><div class="card"><b>Incoming — Nendran Banana, 500 kg</b><p class="muted">₹21,000 • Demo Order</p></div><button class="btn alt" onclick="closeM()">Close</button>';modal.classList.add('show')}
+function nature(){app.innerHTML=head('🌳 Nature & MRV','Scientific data architecture for measuring environmental outcomes.')+'<div class="notice"><b>Important:</b> Values shown are illustrative estimates, not issued carbon credits. Real environmental claims require an appropriate methodology, evidence, quantification, quality controls and applicable validation/verification and registry processes.</div><div class="title"><h2>SAVE → IMPROVE → MEASURE → VERIFY → EARN</h2></div><div class="grid">'+[['🌱','Nature Practices','18','Recorded'],['📊','MRV Records','6','Evidence records'],['♻️','Climate Impact','4.2 tCO₂e','Demonstration estimate'],['🎯','Project Readiness','68 / 100','Illustrative only']].map(x=>'<div class="card"><div class="icon">'+x[0]+'</div><div class="metric">'+x[2]+'</div><h3>'+x[1]+'</h3><div class="muted">'+x[3]+'</div></div>').join('')+'</div><div class="title"><h2>Scientific Carbon & MRV</h2></div><div class="grid">'+[['📐','Quantification','Baseline, project scenario, activity data, factors and uncertainty.'],['🧪','Soil Carbon','Soil observations, laboratory data and modelled estimates.'],['🛰️','Geospatial Evidence','Boundaries, land-use observations and remote sensing.'],['➕','Additionality','Assess whether the intervention is additional under the selected methodology.'],['♻️','Permanence & Reversal','Track fire, drought, flooding and land-use-change risks.'],['🔄','Leakage','Assess whether impacts shift outside the project boundary.'],['🛡️','Verification','Independent review pathway before verified environmental claims.'],['📚','Methodology Library','Version, scope, assumptions, monitoring and applicability.']].map(x=>'<div class="card"><div class="icon">'+x[0]+'</div><h3>'+x[1]+'</h3><div class="muted">'+x[2]+'</div></div>').join('')+'</div><div class="title"><h2>Field Intelligence</h2></div><div class="map"></div><div class="title"><h2>Environmental Outcome Ledger</h2></div><div class="table"><table><tr><th>Indicator</th><th>Demo value</th><th>Evidence</th><th>Confidence</th></tr><tr><td>Soil carbon</td><td>2.1 tCO₂e</td><td>Practice + soil record</td><td>Medium</td></tr><tr><td>Reduced input emissions</td><td>0.8 tCO₂e</td><td>Activity data</td><td>Medium</td></tr><tr><td>Residue management</td><td>0.5 tCO₂e</td><td>Farm record</td><td>Low</td></tr><tr><td>Water management</td><td>0.4 tCO₂e</td><td>Irrigation record</td><td>Low</td></tr></table></div>'}
+function ai(){app.innerHTML=head('🤖 AI Farm Intelligence','Decision-support centre using farm records and, in production, approved data sources.')+'<div class="grid">'+[['🌱','Crop Intelligence','Crop planning, growth stage and field actions.'],['💧','Water Intelligence','Irrigation needs and soil-moisture workflow.'],['🧪','Soil Intelligence','Nutrient and soil-health observations.'],['🐛','Risk Signals','Pest, disease and weather observation workflow.'],['📅','Farm Planner','Upcoming tasks and seasonal planning.'],['🧠','Explainable AI','Show why a recommendation was generated and which data informed it.']].map(x=>'<div class="card"><div class="icon">'+x[0]+'</div><h3>'+x[1]+'</h3><p class="muted">'+x[2]+'</p><div class="notice">Demo intelligence — verify before field action.</div></div>').join('')+'</div>'}
+function finance(){app.innerHTML=head('💰 Finance & Schemes','A discovery and readiness layer — not a loan approval system.')+'<div class="grid">'+[['🏛️','Government Schemes','Discover programs based on farm profile and eligibility signals.'],['🏦','Agricultural Finance','Prepare structured farm information for participating financial partners.'],['🛡️','Insurance','Crop, season, risk and evidence records for applicable insurance workflows.'],['📄','Document Readiness','Track documents and application readiness.']].map(x=>'<div class="card"><div class="icon">'+x[0]+'</div><h3>'+x[1]+'</h3><p class="muted">'+x[2]+'</p><button class="btn alt" onclick="alert(\'Demo pathway\')">Explore</button></div>').join('')+'</div>'}
+function connect(){app.innerHTML=head('🤝 Connect','Connect farms with buyers, FPOs, experts, service providers and partners.')+'<div class="grid">'+[['🏭','Buyers','Processors, retailers, restaurants, institutions and exporters.'],['🤝','FPOs & Farmer Groups','Aggregation, procurement and market access.'],['🧑‍🔬','Technical Experts','Agronomy, soil, irrigation and sustainability support.'],['🚜','Farm Services','Drone, soil testing, machinery, transport and field services.'],['🌍','Nature Partners','MRV, verification and environmental-market ecosystem.'],['💼','Business Partners','Inputs, processing, logistics and technology.']].map(x=>'<div class="card"><div class="icon">'+x[0]+'</div><h3>'+x[1]+'</h3><p class="muted">'+x[2]+'</p><button class="btn alt" onclick="alert(\'Demo connection flow\')">Explore</button></div>').join('')+'</div>'}
+function profile(){app.innerHTML=head('👤 Profile & Consent','Profile, farm relationships and data-sharing controls.')+'<div class="grid"><div class="card"><h3>'+F.person+'</h3><p class="muted">Farmer • Demo profile</p><button class="btn alt">Edit Profile</button></div><div class="card"><h3>Data Consent</h3><p class="muted">Production JANVAN should make data-sharing permissions transparent and user-controlled.</p><span class="tag">Farm records</span> <span class="tag">MRV data</span> <span class="tag">Marketplace</span></div></div>'}
+function closeM(){modal.classList.remove('show')}modal.addEventListener('click',e=>{if(e.target===modal)closeM()});go('home');
+</script></body></html>
