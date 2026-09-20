@@ -143,6 +143,47 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 .product-toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .cart-pill{border:0;background:var(--forest);color:white;padding:10px 14px;border-radius:999px;font-weight:900}
 @media(max-width:700px){.status-flow{grid-template-columns:1fr 1fr}.wallet-ledger{grid-template-columns:1fr}.product-toolbar{align-items:stretch}}
+
+/* ===== JANVAN FINAL V5 — farmer-first ecosystem layer ===== */
+.top-search{min-width:280px;flex:1;max-width:520px;position:relative}
+.top-search input{width:100%;padding:12px 44px 12px 16px;border:1px solid #d9e2da;border-radius:999px;background:#fff;outline:none;font-size:14px}
+.top-search .search-ico{position:absolute;right:14px;top:10px}
+.lang-select{border:1px solid #d9e2da;border-radius:999px;padding:10px 12px;background:#fff;font-weight:800;color:var(--forest)}
+.quick-money{position:fixed;right:18px;bottom:18px;z-index:40;background:#fff;border:1px solid #d7e4da;border-radius:18px;box-shadow:0 12px 30px #00000018;padding:11px 14px;cursor:pointer}
+.quick-money strong{display:block;color:var(--forest)}
+.quick-money span{font-size:11px;color:var(--muted)}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4aa564;margin-right:6px}
+.weather-card{background:linear-gradient(135deg,#eff8f2,#fff);border:1px solid #cfe2d3}
+.money-card{background:linear-gradient(135deg,#f4f8e9,#fff);border:1px solid #dbe7bd}
+.metric-big{font-size:28px;font-weight:950;letter-spacing:-.03em;color:var(--forest)}
+.photo-card{overflow:hidden;border-radius:18px;border:1px solid #dfe8e1;background:#fff}
+.photo-card img{width:100%;height:170px;object-fit:cover;display:block}
+.photo-card .photo-body{padding:13px}
+.product-card-v5{overflow:hidden;border:1px solid #dfe8e1;border-radius:18px;background:#fff;box-shadow:0 7px 22px #00000008}
+.product-card-v5 img{width:100%;height:180px;object-fit:cover;display:block}
+.product-card-v5 .pbody{padding:14px}
+.product-card-v5 .price{font-size:20px;font-weight:950;color:var(--forest)}
+.search-results{position:absolute;left:0;right:0;top:48px;background:#fff;border:1px solid #dce6df;border-radius:16px;box-shadow:0 18px 40px #0002;z-index:50;display:none;overflow:hidden}
+.search-results .sr{padding:12px 15px;border-bottom:1px solid #edf1ed;cursor:pointer}
+.search-results .sr:hover{background:#f5f8f5}
+.asset-row{display:grid;grid-template-columns:1.5fr .6fr .8fr .8fr;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid #edf1ed}
+.monitor-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:16px}
+.camera-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.camera{border:1px solid #dce6df;border-radius:16px;overflow:hidden;background:#10281e}
+.camera img{width:100%;height:150px;object-fit:cover;opacity:.88}
+.camera .cam-info{padding:10px 12px;color:#fff}
+.project-card{border:1px solid #dce6df;border-radius:17px;padding:16px;background:#fff}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.role-choice{border:1px solid #dce6df;border-radius:15px;padding:13px;background:#fff;cursor:pointer}
+.role-choice:hover{border-color:#2f7d4b;background:#f5faf5}
+.voice-btn{border:0;border-radius:999px;background:#edf5ef;padding:10px 13px;font-weight:900;cursor:pointer}
+@media(max-width:800px){
+  .top-search{min-width:160px}
+  .monitor-grid{grid-template-columns:1fr}
+  .camera-grid{grid-template-columns:1fr}
+  .role-grid{grid-template-columns:1fr 1fr}
+  .quick-money{right:10px;bottom:10px}
+}
 </style>
 </head>
 <body>
@@ -162,6 +203,23 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
     <button class="nav-cta" onclick="showPage('farm')">Open Farm</button>
     <button class="mobile-menu" onclick="toggleNav()">☰</button>
   </div>
+
+<div class="top-search">
+  <input id="globalSearch" placeholder="🔍 Search JANVAN — farms, products, services, knowledge..." oninput="runGlobalSearch(this.value)" onkeydown="if(event.key==='Enter')runGlobalSearch(this.value,true)">
+  <span class="search-ico">⌕</span>
+  <div id="searchResults" class="search-results"></div>
+</div>
+<select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)" aria-label="Language">
+  <option value="English">🌐 English</option>
+  <option value="Hindi">हिन्दी</option>
+  <option value="Malayalam">മലയാളം</option>
+  <option value="Tamil">தமிழ்</option>
+  <option value="Gujarati">ગુજરાતી</option>
+  <option value="Kannada">ಕನ್ನಡ</option>
+  <option value="Telugu">తెలుగు</option>
+  <option value="Marathi">मराठी</option>
+</select>
+<button class="voice-btn" onclick="toast('Voice search demo — production version will use multilingual speech recognition')">🎙️</button>
 </header>
 
 <main>
@@ -355,7 +413,53 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
     <div class="card" style="margin-top:16px"><div class="row"><h3>Nature Wallet ledger</h3><button class="btn small" onclick="toast('Nature ledger export prepared')">Export ledger</button></div><div class="wallet-ledger" style="margin-top:12px"><div class="wallet-row"><strong>Cover crop practice</strong><br><span class="mini">Recorded 12 Sep • evidence linked</span></div><div class="wallet-row"><span class="wallet-status">RECORDED</span></div><div class="wallet-row"><strong>Soil baseline sample</strong><br><span class="mini">Lab result • methodology review</span></div><div class="wallet-row"><span class="wallet-status pending">UNDER REVIEW</span></div><div class="wallet-row"><strong>Water-saving irrigation</strong><br><span class="mini">Measurement period • 30 days</span></div><div class="wallet-row"><span class="wallet-status demo">MEASURED</span></div><div class="wallet-row"><strong>Environmental market outcome</strong><br><span class="mini">No issuance recorded</span></div><div class="wallet-row"><span class="wallet-status demo">NOT ISSUED</span></div></div></div>
   </div>
 
-  <div class="section-head"><div><div class="eyebrow">LONG-TERM NATURE VALUE</div><h2>🌱 Nature Wallet</h2><p>A permanent environmental evidence and value ledger for the farm.</p></div><button class="btn green" onclick="toast('Nature Wallet opened')">Open Wallet</button></div>
+  
+<div class="grid grid-2" style="margin-bottom:18px">
+  <div class="card weather-card">
+    <div class="row"><div><div class="eyebrow">WEATHER + FARM RISK</div><h3>🌦️ Farm Weather</h3><p><span class="live-dot"></span>Rain alert linked to today's irrigation plan.</p></div><button class="btn small" onclick="toast('Weather details opened')">View Forecast</button></div>
+    <div class="grid grid-3" style="margin-top:12px"><div><strong>31°C</strong><p class="mini">Temperature</p></div><div><strong>70%</strong><p class="mini">Rain chance</p></div><div><strong>Review</strong><p class="mini">Irrigation</p></div></div>
+  </div>
+  <div class="card money-card">
+    <div class="row"><div><div class="eyebrow">FARM ECONOMICS</div><h3>💰 Season Projection</h3><p>Revenue ₹3.04L · Cost ₹78K · Projected surplus ₹2.26L</p></div><button class="btn green" onclick="showPage('profile')">Open Money</button></div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:18px">
+  <div class="section-head"><div><div class="eyebrow">FARM REGISTER</div><h2>🏡 Infrastructure & Stock</h2><p>Turn the physical farm into a living digital farm record.</p></div><button class="btn green" onclick="toast('Asset added to demo register')">+ Add Asset</button></div>
+  <div class="grid grid-2">
+    <div>
+      <h3>Infrastructure</h3>
+      <div class="asset-row"><strong>💧 Pond</strong><span>1</span><span>Good</span><span>Active</span></div>
+      <div class="asset-row"><strong>💧 Drip irrigation</strong><span>5 acres</span><span>Good</span><span>Active</span></div>
+      <div class="asset-row"><strong>⚡ Motor / Pump</strong><span>2</span><span>Good</span><span>Active</span></div>
+      <div class="asset-row"><strong>🏠 Farm building</strong><span>1</span><span>Good</span><span>Active</span></div>
+    </div>
+    <div>
+      <h3>Machinery & Stock</h3>
+      <div class="asset-row"><strong>🚜 Tractor</strong><span>1</span><span>Good</span><span>Active</span></div>
+      <div class="asset-row"><strong>🛠 Power tiller</strong><span>1</span><span>Good</span><span>Active</span></div>
+      <div class="asset-row"><strong>🧪 Bio-input</strong><span>30 kg</span><span>In stock</span><span>Check</span></div>
+      <div class="asset-row"><strong>🌱 Planting material</strong><span>1,200</span><span>In stock</span><span>Ready</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:18px">
+  <div class="section-head"><div><div class="eyebrow">FARM MONITOR</div><h2>📡 Farm Monitoring Dashboard</h2><p>One view for cameras, devices, water, machinery, weather and AI alerts.</p></div><span class="tag">DEMO CONNECTED</span></div>
+  <div class="monitor-grid">
+    <div class="camera-grid">
+      <div class="camera"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=900&q=80" alt="Demo farm camera view"><div class="cam-info"><strong>Main Gate</strong><br><span class="mini" style="color:#cfe8d5">● Online · Demo Feed</span></div></div>
+      <div class="camera"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Demo field camera view"><div class="cam-info"><strong>Field / Pond</strong><br><span class="mini" style="color:#cfe8d5">● Online · Demo Feed</span></div></div>
+    </div>
+    <div>
+      <div class="item"><strong>💧 Water</strong><span class="tag">Normal</span><p class="mini">Pond level and irrigation review available.</p></div>
+      <div class="item"><strong>🌱 Soil</strong><span class="tag">62%</span><p class="mini">Demo moisture reading.</p></div>
+      <div class="item"><strong>🚜 Machinery</strong><span class="tag">2 Active</span><p class="mini">API/IoT connection ready.</p></div>
+      <div class="item"><strong>🧠 AI Alert</strong><span class="tag amber">Review</span><p class="mini">Pump runtime appears above recent pattern.</p></div>
+    </div>
+  </div>
+</div>
+<div class="section-head"><div><div class="eyebrow">LONG-TERM NATURE VALUE</div><h2>🌱 Nature Wallet</h2><p>A permanent environmental evidence and value ledger for the farm.</p></div><button class="btn green" onclick="toast('Nature Wallet opened')">Open Wallet</button></div>
   <div class="card wallet">
     <div class="row"><div><span class="tag">DEMO • NOT A MONETARY BALANCE</span><div class="wallet-value">Nature Value: Building</div><p>Environmental outcomes are tracked separately from financial credits or cash.</p></div><div class="icon" style="font-size:30px">🌍</div></div>
     <div class="grid grid-4" style="margin-top:15px">
@@ -385,7 +489,17 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 
 <!-- COMMUNITY -->
 <section id="community" class="page">
-  <div class="section-head"><div><div class="eyebrow">COMMUNITY</div><h2>Learn from people who farm.</h2><p>Not a generic social network — a practical knowledge network.</p></div><button class="btn primary" onclick="openModal('postModal')">+ Share</button></div>
+  
+<div class="card" style="margin-bottom:18px">
+  <div class="section-head"><div><div class="eyebrow">LIVE FARM STORIES</div><h2>📸 See what farmers are doing</h2><p>Photos and short videos turn community knowledge into a living learning network.</p></div><button class="btn green" onclick="toast('Create post opened')">+ Share Farm Story</button></div>
+  <div class="grid grid-3">
+    <div class="photo-card"><img src="https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=900&q=80" alt="Farmer field demo"><div class="photo-body"><strong>🌱 Nendran field update</strong><p class="mini">Farmer experience · 2 hours ago</p><div class="row"><span>👍 34</span><span>💬 8</span><button class="btn small" onclick="toast('Followed farmer')">Follow</button></div></div></div>
+    <div class="photo-card"><img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80" alt="Crop field demo"><div class="photo-body"><strong>💧 Water-smart farming</strong><p class="mini">My experiment · Yesterday</p><div class="row"><span>👍 51</span><span>💬 12</span><button class="btn small" onclick="toast('Video link copied')">Share</button></div></div></div>
+    <div class="photo-card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Farm produce demo"><div class="photo-body"><strong>🎥 Harvest story</strong><p class="mini">YouTube-connected farmer video</p><div class="row"><button class="btn small" onclick="toast('Opening YouTube demo link')">▶ Watch</button><span>💰 Creator pathway</span></div></div></div>
+  </div>
+  <div class="item" style="margin-top:14px"><strong>🎥 Share a YouTube farm video</strong><p>Paste a YouTube link or connect an authorized YouTube account. JANVAN stores the link/metadata; YouTube determines creator monetization eligibility.</p><button class="btn" onclick="toast('YouTube link field opened')">Add YouTube Link</button></div>
+</div>
+<div class="section-head"><div><div class="eyebrow">COMMUNITY</div><h2>Learn from people who farm.</h2><p>Not a generic social network — a practical knowledge network.</p></div><button class="btn primary" onclick="openModal('postModal')">+ Share</button></div>
   <div class="grid grid-3">
     <div style="grid-column:span 2" class="card">
       <div class="row"><div><h3>Farm feed</h3><p style="margin:0">Following • Nearby • Circles • Experiments</p></div><button class="btn small" onclick="toast('Feed filter changed')">Filter</button></div>
@@ -422,7 +536,17 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 
 <!-- MARKET -->
 <section id="market" class="page">
-  <div class="section-head"><div><div class="eyebrow">MARKET</div><h2>Buy what the farm needs. Sell what the farm grows.</h2><p>Two-sided marketplace: inputs + produce.</p></div><div style="display:flex;gap:8px;align-items:center"><button class="cart-pill" onclick="openModal('cartModal')">🛒 Cart <span class="cart-count" id="cartCount">0</span></button><button class="btn primary" onclick="openModal('sellModal')">+ Sell Produce</button></div></div>
+  
+<div class="card" style="margin-bottom:18px">
+  <div class="section-head"><div><div class="eyebrow">VISUAL MARKETPLACE</div><h2>🛒 Agriculture Marketplace</h2><p>Large, familiar product discovery for farmers and buyers.</p></div><button class="cart-pill" onclick="openCart()">Cart (<span id="cartCountV5">0</span>)</button></div>
+  <div class="grid grid-4">
+    <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=900&q=80" alt="Farm machinery"><div class="pbody"><strong>🚜 Farm Tractor</strong><p class="mini">Verified seller · Demo</p><div class="price">₹8,50,000</div><button class="btn green" onclick="addCart('Farm Tractor')">Add to Cart</button></div></div>
+    <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=900&q=80" alt="Plants and nursery"><div class="pbody"><strong>🌱 Nendran Plants</strong><p class="mini">Nursery · Demo</p><div class="price">₹35 / plant</div><button class="btn green" onclick="addCart('Nendran Plants')">Add to Cart</button></div></div>
+    <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80" alt="Irrigation equipment"><div class="pbody"><strong>💧 Drip Irrigation</strong><p class="mini">Farm water system · Demo</p><div class="price">₹24,500</div><button class="btn green" onclick="addCart('Drip Irrigation')">Add to Cart</button></div></div>
+    <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=900&q=80" alt="Organic farm inputs"><div class="pbody"><strong>🧪 Bio-input Kit</strong><p class="mini">Soil & crop care · Demo</p><div class="price">₹1,850</div><button class="btn green" onclick="addCart('Bio-input Kit')">Add to Cart</button></div></div>
+  </div>
+</div>
+<div class="section-head"><div><div class="eyebrow">MARKET</div><h2>Buy what the farm needs. Sell what the farm grows.</h2><p>Two-sided marketplace: inputs + produce.</p></div><div style="display:flex;gap:8px;align-items:center"><button class="cart-pill" onclick="openModal('cartModal')">🛒 Cart <span class="cart-count" id="cartCount">0</span></button><button class="btn primary" onclick="openModal('sellModal')">+ Sell Produce</button></div></div>
   
   <div class="product-toolbar"><div><strong>🛒 Marketplace</strong><span class="mini"> Products, equipment and services</span></div><button class="cart-pill" onclick="openCart()">Cart (<span id="cartCount">0</span>)</button></div>
   <div class="market-hero">
@@ -475,7 +599,24 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 
 <!-- PROFILE -->
 <section id="profile" class="page">
-  <div class="section-head"><div><div class="eyebrow">PROFILE & ACCESS</div><h2>Your identity. Your choices. Your data.</h2><p>Personal controls, farm relationships and access to financial/protection services.</p></div><button class="btn primary" onclick="openModal('profileModal')">Edit Profile</button></div>
+  
+<div class="card" style="margin-bottom:18px">
+  <div class="section-head"><div><div class="eyebrow">ECOSYSTEM IDENTITY</div><h2>🏢 Organization & Nature Projects</h2><p>JANVAN supports people, farms, businesses and environmental project organizations.</p></div><button class="btn green" onclick="toast('Organization registration demo opened')">Register Organization</button></div>
+  <div class="role-grid">
+    <div class="role-choice"><strong>🌾 FPO / Farmer Organization</strong><p class="mini">Manage members, farms and services.</p></div>
+    <div class="role-choice"><strong>🌍 Environmental Organization</strong><p class="mini">Develop and manage nature projects.</p></div>
+    <div class="role-choice"><strong>🏢 Business / Company</strong><p class="mini">Buy, sell, sponsor or partner.</p></div>
+    <div class="role-choice"><strong>🌳 Project Developer</strong><p class="mini">Build structured environmental projects.</p></div>
+    <div class="role-choice"><strong>🔬 Expert / Technical Partner</strong><p class="mini">Review methods, evidence and MRV.</p></div>
+    <div class="role-choice"><strong>🛠 Service Provider</strong><p class="mini">Offer equipment and farm services.</p></div>
+  </div>
+  <div class="grid grid-3" style="margin-top:14px">
+    <div class="project-card"><strong>🌳 Afforestation</strong><p class="mini">Trees · biomass · biodiversity</p></div>
+    <div class="project-card"><strong>🌱 Soil Health</strong><p class="mini">Soil practices · measurement · MRV</p></div>
+    <div class="project-card"><strong>💧 Water Conservation</strong><p class="mini">Water-saving and restoration projects</p></div>
+  </div>
+</div>
+<div class="section-head"><div><div class="eyebrow">PROFILE & ACCESS</div><h2>Your identity. Your choices. Your data.</h2><p>Personal controls, farm relationships and access to financial/protection services.</p></div><button class="btn primary" onclick="openModal('profileModal')">Edit Profile</button></div>
   <div class="grid grid-3">
     <div class="card" style="grid-column:span 2"><div class="row"><div><div class="eyebrow">PERSON</div><h3 style="font-size:26px">Sajeesh • Farmer / Builder</h3><p>India • Preferred language: English</p></div><div class="avatar">SK</div></div><div class="tabs"><span class="tag">1 Farm</span><span class="tag">2 Circles</span><span class="tag">Consent controlled</span></div></div>
     <div class="card"><div class="eyebrow">FARM ID</div><h3>JVN-IN-2026-27425</h3><button class="btn small" onclick="showPage('farm')">Open Farm</button></div>
@@ -589,6 +730,34 @@ function askJANVAN(){
   a.style.display='block';
   a.innerHTML='<strong>JANVAN Farm Guide:</strong><br>For <em>'+q.replace(/</g,'&lt;')+'</em>, I would first check your crop, farm stage, local weather, soil/water context and available records. I can then turn the plan into dated tasks, notifications and evidence requests. <span style="opacity:.8">Demo response — production AI requires connected data and safeguards.</span>';
 }
+
+/* ===== V5 interaction layer ===== */
+const JANVAN_SEARCH = [
+  ['tractor','Network → tractors / Market → tractors','network'],
+  ['cold storage','Network → cold storage','network'],
+  ['soil testing','Network → soil testing','network'],
+  ['banana','Market → banana plants / Community → banana farmers','market'],
+  ['carbon','Farm → Nature Wallet / Nature Projects','farm'],
+  ['nature','Farm → Nature & MRV / Organization Projects','farm'],
+  ['water','Farm → water / Network → irrigation','farm'],
+  ['finance','Profile → My Money / Finance & Protection','profile'],
+  ['insurance','Profile → Finance & Protection','profile'],
+  ['youtube','Community → Farm videos','community'],
+  ['machinery','Network → machinery / Farm → Machinery Register','network'],
+  ['weather','Farm → Weather Alerts','farm'],
+  ['soil','Farm → Soil / Nature & MRV','farm'],
+  ['food','Food → Know Your Food','food']
+];
+function runGlobalSearch(q, enter=false){
+  const box=document.getElementById('searchResults'); if(!box)return;
+  q=(q||'').trim().toLowerCase();
+  if(!q){box.style.display='none';box.innerHTML='';return}
+  const hits=JANVAN_SEARCH.filter(x=>x[0].includes(q)||x[1].toLowerCase().includes(q)).slice(0,6);
+  box.innerHTML=(hits.length?hits.map(x=>`<div class="sr" onclick="showPage('${x[2]}');document.getElementById('searchResults').style.display='none'"><strong>${x[0]}</strong><br><span class="mini">${x[1]}</span></div>`).join(''):'<div class="sr">No direct result yet — try a farm, product, service, crop or knowledge term.</div>');
+  box.style.display='block';
+  if(enter && hits[0]){showPage(hits[0][2]);box.style.display='none'}
+}
+function changeLanguage(v){toast('Language selected: '+v+' — full multilingual AI/UI is production-ready as a future layer')}
 </script>
-</body>
+<button id="quickMoney" class="quick-money" onclick="showPage('profile');toast('My Money opened')"><strong>💰 My Money</strong><span>₹24,500 · View farm finance</span></button></body>
 </html>
