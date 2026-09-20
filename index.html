@@ -119,6 +119,30 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 .mrv-score{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.score{padding:15px;background:#f5f8f5;border-radius:15px;text-align:center}.score strong{font-size:25px;color:var(--forest);display:block}.expert{background:#f8fbf8;border:1px solid #cbdccf;border-radius:17px;padding:18px}
 .badge-expert{background:#e4f0e7;color:var(--forest);border:1px solid #c8dccd;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:900}
 @media(max-width:800px){.signin-wrap{grid-template-columns:1fr}.signin-brand{padding:30px}.signin-form{padding:28px}.mrv-score{grid-template-columns:repeat(2,1fr)}}
+
+/* V4 Nature Wallet + commerce refinements */
+.wallet-hero{background:linear-gradient(135deg,#123b2a,#2f7d4b);color:#fff;border-radius:22px;padding:24px;box-shadow:0 12px 30px rgba(18,59,42,.16)}
+.wallet-hero h2,.wallet-hero p,.wallet-hero span{color:#fff}
+.wallet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.wallet-stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:15px;padding:15px}.wallet-stat strong{display:block;font-size:23px;margin-top:5px}.wallet-stat .mini{color:#d7eadb}
+.wallet-ledger{display:grid;grid-template-columns:1fr auto;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.wallet-row{padding:14px 16px;border-bottom:1px solid var(--line)}.wallet-row:nth-last-child(-n+2){border-bottom:0}
+.wallet-status{font-size:10px;font-weight:900;border-radius:999px;padding:5px 8px;background:#edf5ee;color:var(--forest);white-space:nowrap}.wallet-status.pending{background:#fff5df;color:#8b641b}.wallet-status.demo{background:#eef2f4;color:#53636b}
+.cart-pill{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;font-weight:900;color:var(--forest);cursor:pointer}.cart-count{min-width:21px;height:21px;display:grid;place-items:center;background:var(--forest);color:#fff;border-radius:50%;font-size:11px}
+@media(max-width:800px){.wallet-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* FINAL investor-draft enhancements */
+.wallet{background:linear-gradient(135deg,#f1f8f0,#fff);border:1px solid #cfe1d2}
+.wallet-value{font-size:38px;font-weight:950;color:var(--forest);letter-spacing:-.04em}
+.status-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:15px}
+.status-flow div{padding:10px 7px;text-align:center;border-radius:11px;background:#edf3ee;font-size:10px;font-weight:900;color:#536158}
+.status-flow div.on{background:var(--forest);color:white}
+.wallet-ledger{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center}
+.ai-command{background:var(--forest);color:white;border-radius:22px;padding:22px}
+.ai-command h3,.ai-command p{color:white}
+.notification-center{max-height:280px;overflow:auto}
+.product-toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cart-pill{border:0;background:var(--forest);color:white;padding:10px 14px;border-radius:999px;font-weight:900}
+@media(max-width:700px){.status-flow{grid-template-columns:1fr 1fr}.wallet-ledger{grid-template-columns:1fr}.product-toolbar{align-items:stretch}}
 </style>
 </head>
 <body>
@@ -233,7 +257,14 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
     <button class="active" onclick="farmTab(this,'overview')">Overview</button><button onclick="farmTab(this,'passport')">Farm Passport</button><button onclick="farmTab(this,'operations')">Operations</button><button onclick="farmTab(this,'intelligence')">AI Intelligence</button><button onclick="farmTab(this,'nature')">Nature & MRV</button><button onclick="farmTab(this,'finance')">Finance & Protection</button>
   </div>
   
-  <div class="section-head"><div><div class="eyebrow">AI FARM OPERATIONS</div><h2>Your farm gets a daily plan.</h2><p>JANVAN turns a farm plan into practical tasks, reminders and evidence requests.</p></div><button class="btn primary" onclick="toast('Demo tasks refreshed')">Refresh Plan</button></div>
+  
+  <div class="section-head"><div><div class="eyebrow">ONE AI LAYER</div><h2>JANVAN Farm Guide</h2><p>One assistant connects the farm plan to tasks, resources, market, finance and evidence.</p></div></div>
+  <div class="ai-command">
+    <div class="row"><div><h3>What do you need help with today?</h3><p>Ask JANVAN in natural language. Demo responses only.</p></div><span class="tag" style="background:#315842;color:white">AI GUIDE</span></div>
+    <div class="searchbar" style="margin-bottom:0"><input id="aiAsk" class="input" placeholder="e.g. What should I do before planting banana?"><button class="btn green" onclick="askJANVAN()">Ask JANVAN</button></div>
+    <div id="aiAnswer" style="display:none;margin-top:14px;background:#244e38;padding:14px;border-radius:14px;color:white"></div>
+  </div>
+<div class="section-head"><div><div class="eyebrow">AI FARM OPERATIONS</div><h2>Your farm gets a daily plan.</h2><p>JANVAN turns a farm plan into practical tasks, reminders and evidence requests.</p></div><button class="btn primary" onclick="toast('Demo tasks refreshed')">Refresh Plan</button></div>
   <div class="grid grid-3">
     <div class="card" style="grid-column:span 2"><div class="row"><div><h3>Today • 20 Sep</h3><p style="margin:0">5 actions • 2 evidence requests</p></div><span class="tag">AI ASSISTED</span></div>
       <div class="task-timeline" style="margin-top:20px">
@@ -277,46 +308,76 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
     <div class="notice" style="margin-top:16px">AI recommendations are decision support. They should show sources, confidence/uncertainty and when professional or local expert advice is appropriate.</div>
   </div>
   <div id="farm-nature" class="farmtab" style="display:none">
-    <div class="row"><div><h3>Scientific MRV Command Centre</h3><p>Designed for expert review of methodology, boundaries, evidence, calculations and verification readiness.</p></div><span class="badge-expert">EXPERT WORKSPACE • DEMO</span></div>
-    <div class="mrv-score" style="margin-top:16px">
-      <div class="score"><span class="mini">Data completeness</span><strong>81%</strong></div>
-      <div class="score"><span class="mini">Method fit</span><strong>74%</strong></div>
-      <div class="score"><span class="mini">Evidence strength</span><strong>68%</strong></div>
-      <div class="score"><span class="mini">Verification readiness</span><strong>52%</strong></div>
+    <div class="wallet-hero">
+      <div class="row"><div><div class="eyebrow" style="color:#bfe3c5">JANVAN NATURE WALLET</div><h2 style="margin-top:5px">Your farm's long-term nature value.</h2><p style="margin:6px 0 0">A transparent ledger for measured, verified and eligible environmental outcomes.</p></div><span class="badge-expert" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.25)">FARM JVN-IN-2026-27425</span></div>
+      <div class="wallet-grid">
+        <div class="wallet-stat"><span class="mini">Potential value</span><strong>₹—</strong><span class="mini">Under assessment</span></div>
+        <div class="wallet-stat"><span class="mini">Measured outcomes</span><strong>3</strong><span class="mini">Demo records</span></div>
+        <div class="wallet-stat"><span class="mini">Verified outcomes</span><strong>1</strong><span class="mini">Demo only</span></div>
+        <div class="wallet-stat"><span class="mini">MRV readiness</span><strong>52%</strong><span class="mini">Not verification</span></div>
+      </div>
     </div>
+    <div class="notice" style="margin-top:14px">Nature Wallet is an accounting and evidence layer in this prototype — not a bank account, payment wallet or guaranteed carbon-credit balance. Monetary value appears only when an eligible programme/market mechanism and the applicable verification and contractual terms support it.</div>
     <div class="grid grid-2" style="margin-top:16px">
       <div class="card">
-        <div class="row"><h3>Methodology workspace</h3><span class="tag">VERSION CONTROL</span></div>
+        <div class="row"><h3>Nature & climate portfolio</h3><span class="tag">FARM LEDGER</span></div>
         <div class="list" style="margin-top:12px">
-          <div class="item"><strong>Methodology</strong><br><span class="mini">Improved Agricultural Land Management • candidate method</span></div>
-          <div class="item"><strong>Applicability</strong><br><span class="mini">Crop, geography, practice and project-boundary checks required.</span></div>
-          <div class="item"><strong>Baseline scenario</strong><br><span class="mini">Draft → expert review → accepted / revise.</span></div>
-          <div class="item"><strong>Additionality</strong><br><span class="mini">Financial, regulatory and common-practice tests must be documented where applicable.</span></div>
+          <div class="item row"><span>🌱 Soil health / soil carbon</span><span class="wallet-status pending">MEASUREMENT</span></div>
+          <div class="item row"><span>💧 Water conservation</span><span class="wallet-status">RECORDED</span></div>
+          <div class="item row"><span>🌳 Trees / biomass</span><span class="wallet-status pending">EVIDENCE</span></div>
+          <div class="item row"><span>🐝 Biodiversity</span><span class="wallet-status demo">BASELINE</span></div>
+          <div class="item row"><span>🌍 Carbon / GHG</span><span class="wallet-status pending">MRV REVIEW</span></div>
         </div>
       </div>
       <div class="card">
-        <div class="row"><h3>Evidence chain</h3><span class="tag">TRACEABLE</span></div>
+        <div class="row"><h3>Value status</h3><span class="tag">TRANSPARENT</span></div>
         <div class="list" style="margin-top:12px">
-          <div class="item">📍 Geospatial boundary <span class="tag">CAPTURED</span></div>
-          <div class="item">📷 Practice photos <span class="tag">42</span></div>
-          <div class="item">🧪 Soil measurements <span class="tag amber">3 / 5</span></div>
-          <div class="item">🛰 Remote sensing <span class="tag">CONNECTED</span></div>
-          <div class="item">📋 Farm activity ledger <span class="tag">ACTIVE</span></div>
+          <div class="item row"><span>Potential / projected</span><strong>₹—</strong></div>
+          <div class="item row"><span>Measured</span><strong>3 outcomes</strong></div>
+          <div class="item row"><span>Verified</span><strong>1 outcome</strong></div>
+          <div class="item row"><span>Issued / marketable</span><strong>0</strong></div>
+          <div class="item row"><span>Farmer benefit</span><strong>Pending terms</strong></div>
         </div>
       </div>
     </div>
-    <div class="expert" style="margin-top:16px">
-      <div class="row"><h3>Expert review queue</h3><span class="badge-expert">REVIEW REQUIRED</span></div>
-      <p>Experts can inspect source records, assumptions, calculations, sampling plans, uncertainty and methodology applicability before an outcome is treated as verified.</p>
-      <div class="grid grid-3">
-        <button class="btn small" onclick="toast('Methodology review opened')">Review methodology</button>
-        <button class="btn small" onclick="toast('Sampling plan opened')">Review sampling</button>
-        <button class="btn small" onclick="toast('Calculation workbook opened')">Review calculations</button>
+    <div class="card" style="margin-top:16px">
+      <div class="row"><div><h3>Scientific MRV Command Centre</h3><p style="margin:0">Expert workspace for methodology applicability, baseline, additionality, evidence, sampling, calculations and verification readiness.</p></div><span class="badge-expert">EXPERT WORKSPACE • DEMO</span></div>
+      <div class="mrv-score" style="margin-top:16px">
+        <div class="score"><span class="mini">Data completeness</span><strong>81%</strong></div><div class="score"><span class="mini">Method fit</span><strong>74%</strong></div><div class="score"><span class="mini">Evidence strength</span><strong>68%</strong></div><div class="score"><span class="mini">Verification readiness</span><strong>52%</strong></div>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div><h3>Methodology workspace</h3><div class="list"><div class="item"><strong>Candidate methodology</strong><br><span class="mini">Improved Agricultural Land Management • applicability under review</span></div><div class="item"><strong>Baseline</strong><br><span class="mini">Draft → expert review → accepted / revise</span></div><div class="item"><strong>Additionality</strong><br><span class="mini">Financial, regulatory and common-practice evidence where applicable</span></div><div class="item"><strong>Safeguards</strong><br><span class="mini">Leakage • permanence/reversal • uncertainty • double counting</span></div></div></div>
+        <div><h3>Evidence chain</h3><div class="list"><div class="item">📍 Geospatial boundary <span class="tag">CAPTURED</span></div><div class="item">📷 Practice evidence <span class="tag">42</span></div><div class="item">🧪 Soil measurements <span class="tag amber">3 / 5</span></div><div class="item">🛰 Remote sensing <span class="tag">CONNECTED</span></div><div class="item">📋 Activity ledger <span class="tag">ACTIVE</span></div></div></div>
+      </div>
+      <div class="expert" style="margin-top:16px"><div class="row"><h3>Expert review queue</h3><span class="badge-expert">REVIEW REQUIRED</span></div><p>Experts can inspect source records, assumptions, calculations, sampling plans and methodology applicability before an outcome is treated as verified.</p><div class="grid grid-3"><button class="btn small" onclick="toast('Methodology review opened')">Review methodology</button><button class="btn small" onclick="toast('Sampling plan opened')">Review sampling</button><button class="btn small" onclick="toast('Calculation workbook opened')">Review calculations</button></div></div>
+      <div class="notice" style="margin-top:16px">JANVAN can organize evidence and calculations; qualified independent parties remain responsible for validation/verification under the applicable programme or standard. Recorded activity does not automatically become a carbon credit.</div>
+    </div>
+    <div class="card" style="margin-top:16px"><div class="row"><h3>Nature Wallet ledger</h3><button class="btn small" onclick="toast('Nature ledger export prepared')">Export ledger</button></div><div class="wallet-ledger" style="margin-top:12px"><div class="wallet-row"><strong>Cover crop practice</strong><br><span class="mini">Recorded 12 Sep • evidence linked</span></div><div class="wallet-row"><span class="wallet-status">RECORDED</span></div><div class="wallet-row"><strong>Soil baseline sample</strong><br><span class="mini">Lab result • methodology review</span></div><div class="wallet-row"><span class="wallet-status pending">UNDER REVIEW</span></div><div class="wallet-row"><strong>Water-saving irrigation</strong><br><span class="mini">Measurement period • 30 days</span></div><div class="wallet-row"><span class="wallet-status demo">MEASURED</span></div><div class="wallet-row"><strong>Environmental market outcome</strong><br><span class="mini">No issuance recorded</span></div><div class="wallet-row"><span class="wallet-status demo">NOT ISSUED</span></div></div></div>
+  </div>
+
+  <div class="section-head"><div><div class="eyebrow">LONG-TERM NATURE VALUE</div><h2>🌱 Nature Wallet</h2><p>A permanent environmental evidence and value ledger for the farm.</p></div><button class="btn green" onclick="toast('Nature Wallet opened')">Open Wallet</button></div>
+  <div class="card wallet">
+    <div class="row"><div><span class="tag">DEMO • NOT A MONETARY BALANCE</span><div class="wallet-value">Nature Value: Building</div><p>Environmental outcomes are tracked separately from financial credits or cash.</p></div><div class="icon" style="font-size:30px">🌍</div></div>
+    <div class="grid grid-4" style="margin-top:15px">
+      <div><strong>🌱 Soil</strong><p class="mini">Measured: 3 records</p></div>
+      <div><strong>💧 Water</strong><p class="mini">Conservation: 4 practices</p></div>
+      <div><strong>🌳 Trees</strong><p class="mini">Recorded: 182</p></div>
+      <div><strong>🐝 Biodiversity</strong><p class="mini">Baseline: developing</p></div>
+    </div>
+    <div class="item" style="margin-top:15px">
+      <div class="row"><strong>🌍 Carbon & Climate Value</strong><span class="tag amber">MRV IN PROGRESS</span></div>
+      <p>Potential climate outcomes are evaluated against an applicable methodology. This is not a claim of issued credits.</p>
+      <div class="status-flow"><div class="on">Recorded</div><div class="on">Measured</div><div class="on">MRV</div><div>Verified</div><div>Issued / Marketable</div></div>
+    </div>
+    <div class="item" style="margin-top:12px">
+      <div class="row"><strong>Nature Wallet ledger</strong><span class="mini">Permanent farm record</span></div>
+      <div class="wallet-ledger" style="margin-top:12px">
+        <span>Cover crop practice</span><span class="tag">RECORDED</span><span>20 Sep</span>
+        <span>Soil measurement</span><span class="tag amber">REVIEW</span><span>18 Sep</span>
+        <span>Water conservation</span><span class="tag">MEASURED</span><span>12 Sep</span>
       </div>
     </div>
-    <div class="notice" style="margin-top:16px">A scientific dashboard can support expert review, but acceptance/verification must remain with qualified independent parties under the applicable programme or standard. JANVAN does not create a credit merely because data exists.</div>
   </div>
-  >
   <div id="farm-finance" class="farmtab" style="display:none">
     <div class="grid grid-3"><div class="card"><div class="icon">🛡️</div><h3>Insurance</h3><p>Crop, livestock, equipment and other locally available protection products.</p><button class="btn small" onclick="openModal('financeModal')">Check options</button></div><div class="card"><div class="icon">💰</div><h3>Finance</h3><p>Credit, working capital, equipment finance and eligible agriculture products.</p><button class="btn small" onclick="openModal('financeModal')">Explore</button></div><div class="card"><div class="icon">🏛️</div><h3>Schemes</h3><p>Potentially relevant public programmes, subsidies and support services.</p><button class="btn small" onclick="openModal('financeModal')">Find schemes</button></div></div>
   </div>
@@ -361,8 +422,9 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 
 <!-- MARKET -->
 <section id="market" class="page">
-  <div class="section-head"><div><div class="eyebrow">MARKET</div><h2>Buy what the farm needs. Sell what the farm grows.</h2><p>Two-sided marketplace: inputs + produce.</p></div><button class="btn primary" onclick="openModal('sellModal')">+ Sell Produce</button></div>
+  <div class="section-head"><div><div class="eyebrow">MARKET</div><h2>Buy what the farm needs. Sell what the farm grows.</h2><p>Two-sided marketplace: inputs + produce.</p></div><div style="display:flex;gap:8px;align-items:center"><button class="cart-pill" onclick="openModal('cartModal')">🛒 Cart <span class="cart-count" id="cartCount">0</span></button><button class="btn primary" onclick="openModal('sellModal')">+ Sell Produce</button></div></div>
   
+  <div class="product-toolbar"><div><strong>🛒 Marketplace</strong><span class="mini"> Products, equipment and services</span></div><button class="cart-pill" onclick="openCart()">Cart (<span id="cartCount">0</span>)</button></div>
   <div class="market-hero">
     <div class="row"><div><h3 style="font-size:25px">JANVAN AGRI MARKET</h3><p style="margin:3px 0">A complete agriculture marketplace for products, machinery, services and produce.</p></div><span class="tag">DEMO STORE</span></div>
     <div class="searchbar"><input id="marketSearch" class="input" placeholder="Search seeds, tractors, tillers, fertilizer, irrigation, drones, tools..." oninput="filterProducts()"><button class="btn primary" onclick="filterProducts()">Search</button></div>
@@ -371,14 +433,14 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
     </div>
   </div>
   <div class="grid grid-4" id="shopGrid">
-    <div class="shop-card" data-name="tractor"><div class="shop-img">🚜</div><div class="shop-body"><span class="tag">MACHINERY</span><h3>45 HP Farm Tractor</h3><div class="rating">★ 4.7 • 126 reviews</div><p class="seller">Verified seller • Delivery available</p><div class="row"><strong class="price">₹6,85,000</strong><button class="btn small" onclick="addCart('45 HP Farm Tractor')">View</button></div></div></div>
-    <div class="shop-card" data-name="tiller"><div class="shop-img">⚙️</div><div class="shop-body"><span class="tag">MACHINERY</span><h3>7 HP Power Tiller</h3><div class="rating">★ 4.5 • 84 reviews</div><p class="seller">Verified seller • Service support</p><div class="row"><strong class="price">₹1,18,000</strong><button class="btn small" onclick="addCart('7 HP Power Tiller')">View</button></div></div></div>
+    <div class="shop-card" data-name="tractor"><div class="shop-img">🚜</div><div class="shop-body"><span class="tag">MACHINERY</span><h3>45 HP Farm Tractor</h3><div class="rating">★ 4.7 • 126 reviews</div><p class="seller">Verified seller • Delivery available</p><div class="row"><strong class="price">₹6,85,000</strong><button class="btn small" onclick="addCart('45 HP Farm Tractor')">Add to Cart</button></div></div></div>
+    <div class="shop-card" data-name="tiller"><div class="shop-img">⚙️</div><div class="shop-body"><span class="tag">MACHINERY</span><h3>7 HP Power Tiller</h3><div class="rating">★ 4.5 • 84 reviews</div><p class="seller">Verified seller • Service support</p><div class="row"><strong class="price">₹1,18,000</strong><button class="btn small" onclick="addCart('7 HP Power Tiller')">Add to Cart</button></div></div></div>
     <div class="shop-card" data-name="excavator"><div class="shop-img">🏗️</div><div class="shop-body"><span class="tag">HEAVY EQUIPMENT</span><h3>Mini Excavator</h3><div class="rating">★ 4.6 • 39 reviews</div><p class="seller">Dealer • Finance enquiry</p><div class="row"><strong class="price">₹18,50,000</strong><button class="btn small" onclick="addCart('Mini Excavator')">View</button></div></div></div>
-    <div class="shop-card" data-name="seed"><div class="shop-img">🌱</div><div class="shop-body"><span class="tag">SEEDS</span><h3>Hybrid Vegetable Seeds</h3><div class="rating">★ 4.4 • 312 reviews</div><p class="seller">Batch information • Seller verified</p><div class="row"><strong class="price">₹349</strong><button class="btn small" onclick="addCart('Hybrid Vegetable Seeds')">Add</button></div></div></div>
-    <div class="shop-card" data-name="drone"><div class="shop-img">🛰️</div><div class="shop-body"><span class="tag">AGTECH</span><h3>Farm Mapping Drone</h3><div class="rating">★ 4.8 • 21 reviews</div><p class="seller">Professional supplier • Training</p><div class="row"><strong class="price">₹2,40,000</strong><button class="btn small" onclick="addCart('Farm Mapping Drone')">View</button></div></div></div>
-    <div class="shop-card" data-name="irrigation"><div class="shop-img">💧</div><div class="shop-body"><span class="tag">IRRIGATION</span><h3>Drip Irrigation Kit</h3><div class="rating">★ 4.6 • 191 reviews</div><p class="seller">Farm size configurable</p><div class="row"><strong class="price">₹4,900</strong><button class="btn small" onclick="addCart('Drip Irrigation Kit')">Add</button></div></div></div>
-    <div class="shop-card" data-name="fertilizer"><div class="shop-img">🧪</div><div class="shop-body"><span class="tag">INPUT</span><h3>Bio-input / Soil Support</h3><div class="rating">★ 4.3 • 97 reviews</div><p class="seller">Batch & usage information</p><div class="row"><strong class="price">₹650</strong><button class="btn small" onclick="addCart('Bio-input')">Add</button></div></div></div>
-    <div class="shop-card" data-name="implement"><div class="shop-img">🛠️</div><div class="shop-body"><span class="tag">IMPLEMENTS</span><h3>Rotavator</h3><div class="rating">★ 4.5 • 68 reviews</div><p class="seller">Tractor compatible • Dealer</p><div class="row"><strong class="price">₹1,45,000</strong><button class="btn small" onclick="addCart('Rotavator')">View</button></div></div></div>
+    <div class="shop-card" data-name="seed"><div class="shop-img">🌱</div><div class="shop-body"><span class="tag">SEEDS</span><h3>Hybrid Vegetable Seeds</h3><div class="rating">★ 4.4 • 312 reviews</div><p class="seller">Batch information • Seller verified</p><div class="row"><strong class="price">₹349</strong><button class="btn small" onclick="addCart('Hybrid Vegetable Seeds')">Add to Cart</button></div></div></div>
+    <div class="shop-card" data-name="drone"><div class="shop-img">🛰️</div><div class="shop-body"><span class="tag">AGTECH</span><h3>Farm Mapping Drone</h3><div class="rating">★ 4.8 • 21 reviews</div><p class="seller">Professional supplier • Training</p><div class="row"><strong class="price">₹2,40,000</strong><button class="btn small" onclick="addCart('Farm Mapping Drone')">Add to Cart</button></div></div></div>
+    <div class="shop-card" data-name="irrigation"><div class="shop-img">💧</div><div class="shop-body"><span class="tag">IRRIGATION</span><h3>Drip Irrigation Kit</h3><div class="rating">★ 4.6 • 191 reviews</div><p class="seller">Farm size configurable</p><div class="row"><strong class="price">₹4,900</strong><button class="btn small" onclick="addCart('Drip Irrigation Kit')">Add to Cart</button></div></div></div>
+    <div class="shop-card" data-name="fertilizer"><div class="shop-img">🧪</div><div class="shop-body"><span class="tag">INPUT</span><h3>Bio-input / Soil Support</h3><div class="rating">★ 4.3 • 97 reviews</div><p class="seller">Batch & usage information</p><div class="row"><strong class="price">₹650</strong><button class="btn small" onclick="addCart('Bio-input')">Add to Cart</button></div></div></div>
+    <div class="shop-card" data-name="implement"><div class="shop-img">🛠️</div><div class="shop-body"><span class="tag">IMPLEMENTS</span><h3>Rotavator</h3><div class="rating">★ 4.5 • 68 reviews</div><p class="seller">Tractor compatible • Dealer</p><div class="row"><strong class="price">₹1,45,000</strong><button class="btn small" onclick="addCart('Rotavator')">Add to Cart</button></div></div></div>
   </div>
   <div class="ad-slot" style="margin-top:16px">SPONSORED PRODUCT / FARM BRAND SLOT • Future advertising revenue stream • Clearly labelled paid placement</div>
 <div class="tabs"><button class="active" onclick="marketTab(this,'inputs')">Buy Inputs</button><button onclick="marketTab(this,'produce')">Sell / Buy Produce</button><button onclick="marketTab(this,'orders')">Orders</button></div>
@@ -400,7 +462,7 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 <section id="food" class="page">
   <div class="hero" style="padding:35px;grid-template-columns:1fr .65fr">
     <div><div class="eyebrow">KNOW YOUR FOOD</div><h2 style="font-size:42px">From farm to food.</h2><p>Give people a clearer view of the journey behind food — using evidence and consent, not unsupported claims.</p><div class="actions"><button class="btn primary" onclick="openModal('scanModal')">Scan Farm QR</button><button class="btn" onclick="toast('Demo food search')">Search food</button></div></div>
-    <div class="card" style="background:white"><h3>Demo Food Journey</h3><div class="list"><div class="item">🌱 <strong>Farm</strong><br><span class="mini">Green Valley Farm</span></div><div class="item">🌾 <strong>Crop</strong><br><span class="mini">Nendran Banana</span></div><div class="item">🧺 <strong>Harvest</strong><br><span class="mini">28 Sep 2026 • 500 kg</span></div><div class="item">🚚 <strong>Market</strong><br><span class="mini">Verified journey record</span></div></div></div>
+    <div class="card" style="background:white"><h3>Demo Food Journey</h3><div class="list"><div class="item">🌱 <strong>Farm</strong><br><span class="mini">Green Valley Farm</span></div><div class="item">🌾 <strong>Crop</strong><br><span class="mini">Nendran Banana</span></div><div class="item">🧺 <strong>Harvest</strong><br><span class="mini">28 Sep 2026 • 500 kg</span></div><div class="item">🚚 <strong>Market</strong><br><span class="mini">Journey record • Demo</span></div></div></div>
   </div>
   <div class="section-head"><div><h2>Food system intelligence</h2><p>The long-term mission is resilience — not just traceability.</p></div></div>
   <div class="grid grid-3">
@@ -431,7 +493,7 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 
 <footer>
 <div class="footer-inner">
-  <div><h3>JANVAN</h3><p>Your Farm. Your Progress. Your Value.</p><p>People • Nature • Prosperity</p><p>Mission: Help people grow better, learn together, understand their food and build a more resilient food future.</p></div>
+  <div><h3>JANVAN</h3><p>Your Farm. Your Progress. Your Value.</p><p>People • Nature • Prosperity</p><p>Mission: Help people grow better, learn together, understand their food and build a more resilient food future.<br><strong>One identity • One farm record • One intelligence layer • Many connected services.</strong></p></div>
   <div><h3>Product</h3><p>Farm<br>Community<br>Network<br>Market<br>Food</p></div>
   <div><h3>Trust</h3><p>Consent by design<br>Evidence-aware information<br>Regulated partners for regulated services<br>Local configuration</p></div>
   <div><h3>Prototype</h3><p>Demo data only.<br>No real payments, bookings, insurance, loans or marketplace transactions are processed by this prototype.</p></div>
@@ -456,7 +518,10 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 <div class="modal" id="scanModal"><div class="modal-box"><button class="close" onclick="closeModal('scanModal')">×</button><h2>Scan Farm QR</h2><div class="qr" style="width:180px;height:180px"></div><p style="text-align:center">Demo: JVN-IN-2026-27425</p><button class="btn primary" style="width:100%" onclick="closeModal('scanModal');showPage('farm')">Open Farm Passport</button></div></div>
 
 
+<div class="modal" id="cartModal"><div class="modal-box"><button class="close" onclick="closeModal('cartModal')">×</button><h2>🛒 Your Cart</h2><p>Demo cart for the investor prototype.</p><div class="list"><div class="item row"><span>Selected products</span><strong id="cartSummary">Items added from Market</strong></div><div class="item row"><span>Delivery</span><span class="mini">Calculated at checkout</span></div></div><button class="btn primary" style="width:100%;margin-top:16px" onclick="closeModal('cartModal');toast('Demo checkout started')">Proceed to Checkout</button></div></div>
 <div class="modal" id="cameraModal"><div class="modal-box"><button class="close" onclick="closeModal('cameraModal')">×</button><h2>Add farm evidence</h2><p>Use the camera or upload a file. This prototype does not transmit the file to a server.</p><div class="grid grid-2"><button class="btn primary" onclick="document.getElementById('cameraInput').click()">📷 Camera</button><button class="btn" onclick="document.getElementById('fileInput').click()">📁 Upload file</button></div><input id="cameraInput" type="file" accept="image/*" capture="environment" style="display:none" onchange="fileSelected(this)"><input id="fileInput" type="file" accept="image/*,.pdf,.csv,.xlsx,.doc,.docx" style="display:none" onchange="fileSelected(this)"><div id="fileName" class="good" style="margin-top:15px;display:none"></div></div></div>
+
+<div class="modal" id="cartModal"><div class="modal-box"><button class="close" onclick="closeModal('cartModal')">×</button><h2>🛒 Your Cart</h2><div id="cartItems" class="list"><div class="item muted">Your demo cart is empty.</div></div><div class="row" style="margin-top:18px"><strong>Demo total</strong><strong id="cartTotal">₹0</strong></div><button class="btn primary" style="width:100%;margin-top:15px" onclick="closeModal('cartModal');toast('Demo checkout started')">Proceed to Checkout</button><p class="mini">Prototype only — no real payment is processed.</p></div></div>
 <div class="toast" id="toast"></div>
 <script>
 function showPage(id){
@@ -484,7 +549,7 @@ function marketTab(btn,id){
   document.getElementById('market-'+id).style.display='block';
   btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
 }
-function addCart(name){toast(name+' added to demo cart')}
+function addCart(name){const el=document.getElementById('cartCount');if(el){el.textContent=String((parseInt(el.textContent||'0',10)||0)+1)}toast(name+' added to cart')}
 
 function enterApp(){showPage('home');toast('Welcome to JANVAN — demo session started')}
 function authMode(mode){
@@ -501,6 +566,28 @@ function fileSelected(input){
 function filterProducts(){
   const q=(document.getElementById('marketSearch')?.value||'').toLowerCase();
   document.querySelectorAll('#shopGrid .shop-card').forEach(c=>c.style.display=(!q||c.dataset.name.includes(q))?'block':'none');
+}
+
+let cart=[];
+function addCart(name){
+  cart.push({name,price:0});
+  const el=document.getElementById('cartCount'); if(el)el.textContent=cart.length;
+  toast(name+' added to cart');
+}
+function openCart(){
+  const box=document.getElementById('cartItems');
+  if(!cart.length){box.innerHTML='<div class="item muted">Your demo cart is empty.</div>'}
+  else{box.innerHTML=cart.map((x,i)=>'<div class="item row"><span>'+x.name+'</span><button class="btn small" onclick="removeCart('+i+')">Remove</button></div>').join('')}
+  document.getElementById('cartTotal').textContent='Demo total';
+  openModal('cartModal');
+}
+function removeCart(i){cart.splice(i,1);openCart();const el=document.getElementById('cartCount');if(el)el.textContent=cart.length}
+function askJANVAN(){
+  const q=(document.getElementById('aiAsk')?.value||'').trim();
+  const a=document.getElementById('aiAnswer');
+  if(!q){toast('Type a question first');return}
+  a.style.display='block';
+  a.innerHTML='<strong>JANVAN Farm Guide:</strong><br>For <em>'+q.replace(/</g,'&lt;')+'</em>, I would first check your crop, farm stage, local weather, soil/water context and available records. I can then turn the plan into dated tasks, notifications and evidence requests. <span style="opacity:.8">Demo response — production AI requires connected data and safeguards.</span>';
 }
 </script>
 </body>
