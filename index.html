@@ -185,6 +185,29 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
   
 }
 .timeline{display:grid;gap:0}.timeline-item{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid #e5e2d8}.timeline-item:last-child{border-bottom:0}.progress{height:8px;background:#e6e2d8;border-radius:20px;overflow:hidden}.progress span{display:block;height:100%;background:#3FAE68;border-radius:20px}
+
+/* ===== GLOBAL UX V2: clearer core actions, relevant agriculture imagery, carbon pathway ===== */
+.core-action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 22px}
+.core-action{position:relative;text-align:left;border:1px solid var(--line)!important;padding:22px;min-height:175px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.core-action:hover{transform:translateY(-2px);border-color:#c6dccb!important}
+.core-action h3{font-size:20px;margin:4px 0 7px}.core-action p{font-size:13px;margin:0;line-height:1.5}
+.core-action .icon{margin-bottom:12px}
+.core-definition{background:#fff;border:1px solid #dce7de;border-radius:22px;padding:20px;margin:0 0 22px}
+.core-definition-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.core-definition-item{border-radius:17px;padding:17px;border:1px solid #e1e8e2;background:#f8fbf8}
+.core-definition-item h3{margin:0 0 5px}.core-definition-item p{margin:0;font-size:13px}
+.carbon-landing{background:linear-gradient(135deg,#123b2a 0%,#1f5b3d 65%,#2f7d4b 100%);color:#fff;border-radius:24px;padding:24px;margin:24px 0;box-shadow:0 14px 35px rgba(18,59,42,.16)}
+.carbon-landing h2,.carbon-landing h3,.carbon-landing p,.carbon-landing .mini{color:#fff}
+.carbon-landing-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
+.carbon-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:16px}
+.carbon-step{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);border-radius:13px;padding:11px 7px;text-align:center;font-size:11px;font-weight:850}
+.carbon-stat{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:18px}
+.carbon-stat .big{font-size:31px;font-weight:950;letter-spacing:-.03em;margin-top:6px}
+.carbon-note{font-size:11px!important;color:#d9ebe0!important;line-height:1.5!important}
+.image-credit{font-size:10px;color:#91a99a;margin-top:8px}
+@media(max-width:900px){.core-action-grid{grid-template-columns:repeat(2,1fr)}.carbon-landing-grid{grid-template-columns:1fr}.carbon-steps{grid-template-columns:repeat(5,1fr)}}
+@media(max-width:620px){.core-action{min-height:142px;padding:15px;border-radius:17px}.core-action h3{font-size:17px}.core-action p{font-size:11px}.core-action .icon{width:36px;height:36px;font-size:18px;margin-bottom:9px}.core-definition-grid{grid-template-columns:1fr}.carbon-steps{grid-template-columns:1fr 1fr}.carbon-landing{padding:18px;border-radius:20px}}
+
 </style>
 </head>
 <body>
@@ -263,12 +286,12 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
       <p style="font-size:18px;max-width:700px;margin:0">Everything you need for your farm, connected in one simple place.</p>
     </div>
     <div class="avatar" style="width:64px;height:64px;border-radius:50%;overflow:hidden;padding:0;background:#dcefe1">
-      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=180&q=80" alt="Farmer profile photo" style="width:100%;height:100%;object-fit:cover">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/A_farmer_in_Kerala_01.jpg" alt="Farmer profile photo" style="width:100%;height:100%;object-fit:cover">
     </div>
   </div>
 
   <div class="card" style="padding:0;overflow:hidden;border:2px solid #d9e9dc;margin-bottom:20px">
-    <div style="height:210px;background:linear-gradient(180deg,rgba(18,55,42,.03),rgba(18,55,42,.78)),url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1400&q=85') center/cover"></div>
+    <div style="height:210px;background:linear-gradient(180deg,rgba(18,55,42,.03),rgba(18,55,42,.78)),url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Chinawal-Banana-Farm.jpg') center/cover"></div>
     <div style="padding:20px 22px">
       <div class="row" style="align-items:flex-start"><div><div class="eyebrow">MY FARM</div><h2 style="margin:4px 0 5px;font-size:30px">Green Valley Farm</h2><p style="margin:0">5 acres · Banana · Coconut · Cultivator</p></div><span class="tag" style="background:#e7f4e9;color:#24643a">● FARM STATUS: GOOD</span></div>
       <div class="row" style="margin-top:14px"><span class="mini">FARM ID</span><strong>JVN-IN-2026-27425</strong><button class="btn small" onclick="showPage('farm')">🌱 SEE MY FARM</button></div>
@@ -276,11 +299,38 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
   </div>
 
   <div class="eyebrow" style="margin-bottom:10px">WHAT DO YOU WANT TO DO?</div>
-  <div class="grid grid-4" style="margin-bottom:22px">
-    <button class="card" style="text-align:left;border:0" onclick="showPage('connect')"><div class="icon">✋</div><h3>I NEED</h3><p>Find inputs, labour, transport, machinery, services or buyers.</p></button>
-    <button class="card" style="text-align:left;border:0" onclick="showPage('connect')"><div class="icon">📦</div><h3>I HAVE</h3><p>Offer produce, residue, manure, seedlings or other resources.</p></button>
-    <button class="card" style="text-align:left;border:0" onclick="showPage('farm')"><div class="icon">✅</div><h3>I DID THIS</h3><p>Record farm work, harvest, expenses, evidence or an activity.</p></button>
-    <button class="card" style="text-align:left;border:0" onclick="showPage('farm');setTimeout(()=>document.getElementById('aiAsk')?.focus(),250)"><div class="icon">🤖</div><h3>ASK JANVAN</h3><p>Ask what to do, explain a problem or use your voice.</p></button>
+  <div class="core-action-grid">
+    <button class="card core-action" onclick="showPage('connect')"><div class="icon">✋</div><h3>I NEED</h3><p>Get what your farm needs: inputs, labour, transport, machinery, drone services, storage, experts or buyers.</p></button>
+    <button class="card core-action" onclick="showPage('connect')"><div class="icon">📦</div><h3>I HAVE</h3><p>Turn available produce, residue, manure, fodder, seedlings or other resources into useful connections and value.</p></button>
+    <button class="card core-action" onclick="showPage('farm')"><div class="icon">✅</div><h3>I DID THIS</h3><p>Record work, harvest, expense, evidence or a farm practice. Your farm history grows with you.</p></button>
+    <button class="card core-action" onclick="showPage('farm');setTimeout(()=>document.getElementById('aiAsk')?.focus(),250)"><div class="icon">🤖</div><h3>ASK JANVAN</h3><p>Ask what to do next, explain a problem, use a photo or speak to JANVAN.</p></button>
+  </div>
+
+  <div class="core-definition">
+    <div class="eyebrow">THE CORE OF JANVAN</div>
+    <div class="core-definition-grid" style="margin-top:10px">
+      <div class="core-definition-item"><h3>✋ I NEED = GET HELP</h3><p>JANVAN understands your farm context, then finds relevant people, products and services instead of showing you everything at once.</p></div>
+      <div class="core-definition-item"><h3>📦 I HAVE = CREATE VALUE</h3><p>Declare what you have. JANVAN can estimate, aggregate, match, arrange logistics and connect it to an appropriate user or buyer.</p></div>
+    </div>
+  </div>
+
+  <div class="carbon-landing">
+    <div class="carbon-landing-grid">
+      <div>
+        <div class="eyebrow" style="color:#bfe3c5">🌍 CARBON & NATURE INTELLIGENCE</div>
+        <h2 style="margin-top:7px">Measure first. Verify before value.</h2>
+        <p>JANVAN records farm practices and evidence so eligible carbon and other nature outcomes can be assessed against an applicable methodology. A calculation is an estimate until the required measurement, review and verification steps are completed.</p>
+        <div class="carbon-steps"><div class="carbon-step">Practice</div><div class="carbon-step">Evidence</div><div class="carbon-step">Measurement</div><div class="carbon-step">Verification</div><div class="carbon-step">Issuance / Value</div></div>
+        <div class="actions" style="margin-top:18px"><button class="btn" onclick="showPage('farm');setTimeout(()=>farmTab(document.querySelector('.tabs button:nth-child(5)'),'nature'),150)">Open Carbon & MRV</button><button class="btn green" onclick="openModal('carbonModal')">Calculate potential</button></div>
+      </div>
+      <div class="carbon-stat">
+        <div class="mini">DEMO FARM • JVN-IN-2026-27425</div>
+        <div class="big">Carbon pathway ready</div>
+        <p style="margin:7px 0">Practices recorded: <strong>6</strong><br>Evidence records: <strong>42</strong><br>MRV readiness: <strong>52%</strong></p>
+        <div class="tag" style="background:rgba(255,255,255,.13);color:#fff">STATUS: ESTIMATED / NOT VERIFIED</div>
+        <p class="carbon-note" style="margin-top:12px">Prototype data only. Actual credit quantity and eligibility depend on the applicable methodology, baseline, additionality, measurement, uncertainty, verification and programme rules.</p>
+      </div>
+    </div>
   </div>
 
   <div class="grid grid-3">
@@ -295,7 +345,7 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
   <div class="section-head"><div><div class="eyebrow">FARM CONTROL CENTRE</div><h2>Everything begins with the farm.</h2><p>One persistent farm identity that can travel across services.</p></div><button class="btn primary" onclick="openModal('farmModal')">+ Add Farm</button></div>
   <div class="grid grid-3">
     <div class="card" style="grid-column:span 2">
-      <div class="row"><div><span class="tag">ACTIVE FARM</span><h3 style="font-size:25px;margin-top:8px">Green Valley Farm</h3><p style="margin:3px 0">Kerala • India • 5.0 acres • Cultivator</p></div><div class="avatar" style="width:58px;height:58px;border-radius:50%;overflow:hidden;padding:0"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=180&q=80" alt="Farmer photo" style="width:100%;height:100%;object-fit:cover"></div></div>
+      <div class="row"><div><span class="tag">ACTIVE FARM</span><h3 style="font-size:25px;margin-top:8px">Green Valley Farm</h3><p style="margin:3px 0">Kerala • India • 5.0 acres • Cultivator</p></div><div class="avatar" style="width:58px;height:58px;border-radius:50%;overflow:hidden;padding:0"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/A_farmer_in_Kerala_01.jpg" alt="Farmer photo" style="width:100%;height:100%;object-fit:cover"></div></div>
       <div class="grid grid-4" style="margin-top:22px">
         <div><div class="kpi">5.0</div><div class="mini">acres</div></div>
         <div><div class="kpi">6</div><div class="mini">crop groups</div></div>
@@ -443,8 +493,8 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
   <div class="section-head"><div><div class="eyebrow">FARM MONITOR</div><h2>📡 Farm Monitoring Dashboard</h2><p>One view for cameras, devices, water, machinery, weather and AI alerts.</p></div><span class="tag">DEMO CONNECTED</span></div>
   <div class="monitor-grid">
     <div class="camera-grid">
-      <div class="camera"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=900&q=80" alt="Demo farm camera view"><div class="cam-info"><strong>Main Gate</strong><br><span class="mini" style="color:#cfe8d5">● Online · Demo Feed</span></div></div>
-      <div class="camera"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Demo field camera view"><div class="cam-info"><strong>Field / Pond</strong><br><span class="mini" style="color:#cfe8d5">● Online · Demo Feed</span></div></div>
+      <div class="camera"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Chinawal-Banana-Farm.jpg" alt="Demo farm camera view"><div class="cam-info"><strong>Main Gate</strong><br><span class="mini" style="color:#cfe8d5">● Online · Demo Feed</span></div></div>
+      <div class="camera"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Drip_irrigation_work_in_a_farm_1.jpg" alt="Demo field camera view"><div class="cam-info"><strong>Field / Pond</strong><br><span class="mini" style="color:#cfe8d5">● Online · Demo Feed</span></div></div>
     </div>
     <div>
       <div class="item"><strong>💧 Water</strong><span class="tag">Normal</span><p class="mini">Pond level and irrigation review available.</p></div>
@@ -488,9 +538,9 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 <div class="card" style="margin-bottom:18px">
   <div class="section-head"><div><div class="eyebrow">LIVE FARM STORIES</div><h2>📸 See what farmers are doing</h2><p>Photos and short videos turn community knowledge into a living learning network.</p></div><button class="btn green" onclick="toast('Create post opened')">+ Share Farm Story</button></div>
   <div class="grid grid-3">
-    <div class="photo-card"><img src="https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=900&q=80" alt="Farmer field demo"><div class="photo-body"><strong>🌱 Nendran field update</strong><p class="mini">Farmer experience · 2 hours ago</p><div class="row"><span>👍 34</span><span>💬 8</span><button class="btn small" onclick="toast('Followed farmer')">Follow</button></div></div></div>
-    <div class="photo-card"><img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80" alt="Crop field demo"><div class="photo-body"><strong>💧 Water-smart farming</strong><p class="mini">My experiment · Yesterday</p><div class="row"><span>👍 51</span><span>💬 12</span><button class="btn small" onclick="toast('Video link copied')">Share</button></div></div></div>
-    <div class="photo-card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Farm produce demo"><div class="photo-body"><strong>🎥 Harvest story</strong><p class="mini">YouTube-connected farmer video</p><div class="row"><button class="btn small" onclick="toast('Opening YouTube demo link')">▶ Watch</button><span>💰 Creator pathway</span></div></div></div>
+    <div class="photo-card"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/A_farmer_in_Kerala_01.jpg" alt="Farmer field demo"><div class="photo-body"><strong>🌱 Nendran field update</strong><p class="mini">Farmer experience · 2 hours ago</p><div class="row"><span>👍 34</span><span>💬 8</span><button class="btn small" onclick="toast('Followed farmer')">Follow</button></div></div></div>
+    <div class="photo-card"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Drip_irrigation_work_in_a_farm_1.jpg" alt="Crop field demo"><div class="photo-body"><strong>💧 Water-smart farming</strong><p class="mini">My experiment · Yesterday</p><div class="row"><span>👍 51</span><span>💬 12</span><button class="btn small" onclick="toast('Video link copied')">Share</button></div></div></div>
+    <div class="photo-card"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Coconut_harvesting.jpg" alt="Farm produce demo"><div class="photo-body"><strong>🎥 Harvest story</strong><p class="mini">YouTube-connected farmer video</p><div class="row"><button class="btn small" onclick="toast('Opening YouTube demo link')">▶ Watch</button><span>💰 Creator pathway</span></div></div></div>
   </div>
   <div class="item" style="margin-top:14px"><strong>🎥 Share a YouTube farm video</strong><p>Paste a YouTube link or connect an authorized YouTube account. JANVAN stores the link/metadata; YouTube determines creator monetization eligibility.</p><button class="btn" onclick="toast('YouTube link field opened')">Add YouTube Link</button></div>
 </div>
@@ -535,10 +585,10 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 <div class="card" style="margin-bottom:18px">
   <div class="section-head"><div><div class="eyebrow">VISUAL MARKETPLACE</div><h2>🛒 Agriculture Marketplace</h2><p>Large, familiar product discovery for farmers and buyers.</p></div><button class="cart-pill" onclick="openCart()">Cart (<span id="cartCount">0</span>)</button></div>
   <div class="grid grid-4">
-    <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=900&q=80" alt="Farm machinery"><div class="pbody"><strong>🚜 Farm Tractor</strong><p class="mini">Verified seller · Demo</p><div class="price">₹8,50,000</div><button class="btn green" onclick="addCart('Farm Tractor')">Add to Cart</button></div></div>
-    <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=900&q=80" alt="Plants and nursery"><div class="pbody"><strong>🌱 Nendran Plants</strong><p class="mini">Nursery · Demo</p><div class="price">₹35 / plant</div><button class="btn green" onclick="addCart('Nendran Plants')">Add to Cart</button></div></div>
-    <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80" alt="Irrigation equipment"><div class="pbody"><strong>💧 Drip Irrigation</strong><p class="mini">Farm water system · Demo</p><div class="price">₹24,500</div><button class="btn green" onclick="addCart('Drip Irrigation')">Add to Cart</button></div></div>
-    <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=900&q=80" alt="Organic farm inputs"><div class="pbody"><strong>🧪 Bio-input Kit</strong><p class="mini">Soil & crop care · Demo</p><div class="price">₹1,850</div><button class="btn green" onclick="addCart('Bio-input Kit')">Add to Cart</button></div></div>
+    <div class="product-card-v5"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Field_ploughing_by_tractor.jpg" alt="Farm machinery"><div class="pbody"><strong>🚜 Farm Tractor</strong><p class="mini">Verified seller · Demo</p><div class="price">₹8,50,000</div><button class="btn green" onclick="addCart('Farm Tractor')">Add to Cart</button></div></div>
+    <div class="product-card-v5"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Chinawal-Banana-Farm.jpg" alt="Plants and nursery"><div class="pbody"><strong>🌱 Nendran Plants</strong><p class="mini">Nursery · Demo</p><div class="price">₹35 / plant</div><button class="btn green" onclick="addCart('Nendran Plants')">Add to Cart</button></div></div>
+    <div class="product-card-v5"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Drip_irrigation_work_in_a_farm_1.jpg" alt="Irrigation equipment"><div class="pbody"><strong>💧 Drip Irrigation</strong><p class="mini">Farm water system · Demo</p><div class="price">₹24,500</div><button class="btn green" onclick="addCart('Drip Irrigation')">Add to Cart</button></div></div>
+    <div class="product-card-v5"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Agricultural_drone,_Kerala_2023.jpg" alt="Organic farm inputs"><div class="pbody"><strong>🧪 Bio-input Kit</strong><p class="mini">Soil & crop care · Demo</p><div class="price">₹1,850</div><button class="btn green" onclick="addCart('Bio-input Kit')">Add to Cart</button></div></div>
   </div>
 </div>
 <div class="section-head"><div><div class="eyebrow">MARKET</div><h2>Buy what the farm needs. Sell what the farm grows.</h2><p>Two-sided marketplace: inputs + produce.</p></div><div style="display:flex;gap:8px;align-items:center"><button class="cart-pill" onclick="openModal('cartModal')">🛒 Cart <span class="cart-count" id="cartCount">0</span></button><button class="btn primary" onclick="openModal('sellModal')">+ Sell Produce</button></div></div>
@@ -632,7 +682,7 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
   <div><h3>JANVAN</h3><p>Your Farm. Your Progress. Your Value.</p><p>People • Nature • Prosperity</p><p>Mission: Help people grow better, learn together, understand their food and build a more resilient food future.<br><strong>One identity • One farm record • One intelligence layer • Many connected services.</strong></p></div>
   <div><h3>Product</h3><p>Farm<br>Community<br>Network<br>Market<br>Food</p></div>
   <div><h3>Trust</h3><p>Consent by design<br>Evidence-aware information<br>Regulated partners for regulated services<br>Local configuration</p></div>
-  <div><h3>Prototype</h3><p>Demo data only.<br>No real payments, bookings, insurance, loans or marketplace transactions are processed by this prototype.</p></div>
+  <div><h3>Prototype</h3><p>Demo data only.<br>No real payments, bookings, insurance, loans or marketplace transactions are processed by this prototype.</p><p class="image-credit">Agriculture imagery in this prototype includes Creative Commons material from Wikimedia Commons. Attribution and licence details are retained with the source files/pages.</p></div>
 </div>
 </footer>
 
@@ -653,6 +703,8 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 
 <div class="modal" id="scanModal"><div class="modal-box"><button class="close" onclick="closeModal('scanModal')">×</button><h2>Scan Farm QR</h2><div class="qr" style="width:180px;height:180px"></div><p style="text-align:center">Demo: JVN-IN-2026-27425</p><button class="btn primary" style="width:100%" onclick="closeModal('scanModal');showPage('farm')">Open Farm Passport</button></div></div>
 
+
+<div class="modal" id="carbonModal"><div class="modal-box"><button class="close" onclick="closeModal('carbonModal')">×</button><h2>🌍 Carbon potential calculator</h2><p>This prototype calculator is a <strong>screening interface</strong>, not a credit issuance calculation. JANVAN must use an applicable methodology and the required farm/project data before any claim of credits.</p><div class="form-grid"><div><label>Farm area</label><input id="carbonArea" class="input" value="5" type="number" min="0"></div><div><label>Area unit</label><select class="input"><option>acres</option><option>hectares</option></select></div><div><label>Main crop</label><select class="input"><option>Banana</option><option>Coconut</option><option>Rice</option><option>Maize</option><option>Mixed / other</option></select></div><div><label>Practice evidence</label><select class="input"><option>Recorded</option><option>Partial</option><option>Not yet recorded</option></select></div><div class="full"><label>Practices to assess</label><div><span class="tag">Residue management</span><span class="tag">Fertilizer management</span><span class="tag">Water management</span><span class="tag">Cover / crop rotation</span><span class="tag">Soil carbon</span></div></div></div><div class="notice" style="margin-top:15px"><strong>Result:</strong> JANVAN will first determine whether a suitable methodology and sufficient evidence exist. It will then calculate a methodology-specific estimate and show uncertainty and verification status.</div><button class="btn primary" style="margin-top:18px" onclick="closeModal('carbonModal');toast('Demo carbon assessment started — methodology and evidence review required')">Start assessment</button></div></div>
 
 <div class="modal" id="cartModal"><div class="modal-box"><button class="close" onclick="closeModal('cartModal')">×</button><h2>🛒 Your Cart</h2><p>Demo cart for the investor prototype.</p><div class="list"><div class="item row"><span>Selected products</span><strong id="cartSummary">Items added from Market</strong></div><div class="item row"><span>Delivery</span><span class="mini">Calculated at checkout</span></div></div><button class="btn primary" style="width:100%;margin-top:16px" onclick="closeModal('cartModal');toast('Demo checkout started')">Proceed to Checkout</button></div></div>
 <div class="modal" id="cameraModal"><div class="modal-box"><button class="close" onclick="closeModal('cameraModal')">×</button><h2>Add farm evidence</h2><p>Use the camera or upload a file. This prototype does not transmit the file to a server.</p><div class="grid grid-2"><button class="btn primary" onclick="document.getElementById('cameraInput').click()">📷 Camera</button><button class="btn" onclick="document.getElementById('fileInput').click()">📁 Upload file</button></div><input id="cameraInput" type="file" accept="image/*" capture="environment" style="display:none" onchange="fileSelected(this)"><input id="fileInput" type="file" accept="image/*,.pdf,.csv,.xlsx,.doc,.docx" style="display:none" onchange="fileSelected(this)"><div id="fileName" class="good" style="margin-top:15px;display:none"></div></div></div>
