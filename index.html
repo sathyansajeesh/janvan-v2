@@ -256,84 +256,37 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 
 <!-- HOME -->
 <section id="home" class="page">
-  <div class="hero" style="align-items:stretch">
+  <div class="section-head" style="align-items:flex-start">
     <div>
-      <div class="eyebrow">GOOD MORNING • JANVAN</div>
-      <h1 style="font-size:clamp(38px,5vw,64px);line-height:1.03">Your farm,<br><span style="color:#3FAE68">at a glance.</span></h1>
-      <p style="font-size:18px;max-width:560px">See your farm. Know what needs attention. Act when it matters.</p>
-      <div class="actions" style="margin-top:24px">
-        <button class="btn primary" onclick="showPage('farm')">🌾 SEE MY FARM</button>
-        <button class="btn" onclick="showPage('farm');setTimeout(()=>document.getElementById('aiAsk')?.focus(),100)">🤖 ASK JANVAN</button>
-      </div>
+      <div class="eyebrow">JANVAN • YOUR AGRICULTURE OPERATING SYSTEM</div>
+      <h1 style="font-size:clamp(34px,5vw,58px);line-height:1.05;margin-bottom:8px">Good morning, Rajan 👋</h1>
+      <p style="font-size:18px;max-width:700px;margin:0">Everything you need for your farm, connected in one simple place.</p>
     </div>
-    <div class="hero-card" style="padding:0;overflow:hidden">
-      <div style="height:210px;background:linear-gradient(180deg,rgba(18,55,42,.02),rgba(18,55,42,.78)),url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80') center/cover"></div>
-      <div style="padding:20px">
-        <div class="row">
-          <div>
-            <span class="tag" style="background:#315842;color:white">MY FARM</span>
-            <h3 style="font-size:25px;margin-top:10px">Green Valley Farm</h3>
-            <p>5 acres · Banana · Coconut</p>
-          </div>
-          <div class="avatar">GV</div>
-        </div>
-        <div class="row" style="margin-top:15px"><span class="mini">JANVAN FARM ID</span><strong>JVN-IN-2026-27425</strong></div>
-      </div>
+    <div class="avatar" style="width:64px;height:64px;border-radius:50%;overflow:hidden;padding:0;background:#dcefe1">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=180&q=80" alt="Farmer profile photo" style="width:100%;height:100%;object-fit:cover">
     </div>
   </div>
 
-  <div class="grid grid-4" style="margin-top:24px">
-    <div class="card" style="cursor:pointer;text-align:center;padding:22px 16px" onclick="showPage('farm')">
-      <div class="icon" style="font-size:34px">🌾</div><h3 style="margin:8px 0 4px">See My Farm</h3><p style="margin:0">Farm status, crops and today.</p>
-    </div>
-    <div class="card" style="cursor:pointer;text-align:center;padding:22px 16px;border:2px solid #3FAE68" onclick="showPage('farm');setTimeout(()=>document.getElementById('aiAsk')?.focus(),100)">
-      <div class="icon" style="font-size:34px">🤖</div><h3 style="margin:8px 0 4px">Ask JANVAN</h3><p style="margin:0">Get guidance from your farm context.</p>
-    </div>
-    <div class="card" style="cursor:pointer;text-align:center;padding:22px 16px" onclick="openModal('activityModal')">
-      <div class="icon" style="font-size:34px">📸</div><h3 style="margin:8px 0 4px">I DID THIS</h3><p style="margin:0">Record work in seconds.</p>
-    </div>
-    <div class="card" style="cursor:pointer;text-align:center;padding:22px 16px" onclick="showPage('market')">
-      <div class="icon" style="font-size:34px">🍌</div><h3 style="margin:8px 0 4px">Sell My Harvest</h3><p style="margin:0">Find buyers, storage and transport.</p>
+  <div class="card" style="padding:0;overflow:hidden;border:2px solid #d9e9dc;margin-bottom:20px">
+    <div style="height:210px;background:linear-gradient(180deg,rgba(18,55,42,.03),rgba(18,55,42,.78)),url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1400&q=85') center/cover"></div>
+    <div style="padding:20px 22px">
+      <div class="row" style="align-items:flex-start"><div><div class="eyebrow">MY FARM</div><h2 style="margin:4px 0 5px;font-size:30px">Green Valley Farm</h2><p style="margin:0">5 acres · Banana · Coconut · Cultivator</p></div><span class="tag" style="background:#e7f4e9;color:#24643a">● FARM STATUS: GOOD</span></div>
+      <div class="row" style="margin-top:14px"><span class="mini">FARM ID</span><strong>JVN-IN-2026-27425</strong><button class="btn small" onclick="showPage('farm')">🌱 SEE MY FARM</button></div>
     </div>
   </div>
 
-  <div class="grid grid-2" style="margin-top:24px">
-    <div class="card">
-      <div class="row">
-        <div><div class="eyebrow">MY FARM STORY</div><h2 style="margin-top:5px">The memory of your farm.</h2></div>
-        <button class="btn small" onclick="showPage('farm')">View Story</button>
-      </div>
-      <div class="timeline" style="margin-top:18px">
-        <div class="timeline-item"><strong>20 Sep</strong><span>Compost application recorded · 200 kg</span></div>
-        <div class="timeline-item"><strong>18 Sep</strong><span>Irrigation completed</span></div>
-        <div class="timeline-item"><strong>12 Sep</strong><span>Cover crop activity recorded</span></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="eyebrow">TODAY ON YOUR FARM</div>
-      <h2>What needs attention?</h2>
-      <p>Weather, tasks, crop activities and important alerts are connected to the same Farm ID.</p>
-      <div class="actions">
-        <button class="btn primary" onclick="showPage('farm')">Open Farm</button>
-        <button class="btn" onclick="openModal('activityModal')">Record Activity</button>
-      </div>
-    </div>
+  <div class="eyebrow" style="margin-bottom:10px">WHAT DO YOU WANT TO DO?</div>
+  <div class="grid grid-4" style="margin-bottom:22px">
+    <button class="card" style="text-align:left;border:0" onclick="showPage('connect')"><div class="icon">✋</div><h3>I NEED</h3><p>Find inputs, labour, transport, machinery, services or buyers.</p></button>
+    <button class="card" style="text-align:left;border:0" onclick="showPage('connect')"><div class="icon">📦</div><h3>I HAVE</h3><p>Offer produce, residue, manure, seedlings or other resources.</p></button>
+    <button class="card" style="text-align:left;border:0" onclick="showPage('farm')"><div class="icon">✅</div><h3>I DID THIS</h3><p>Record farm work, harvest, expenses, evidence or an activity.</p></button>
+    <button class="card" style="text-align:left;border:0" onclick="showPage('farm');setTimeout(()=>document.getElementById('aiAsk')?.focus(),250)"><div class="icon">🤖</div><h3>ASK JANVAN</h3><p>Ask what to do, explain a problem or use your voice.</p></button>
   </div>
 
-  <div class="card" style="margin-top:24px;background:#f7f5ef">
-    <div class="section-head" style="margin-bottom:14px">
-      <div><div class="eyebrow">JANVAN</div><h2>Everything else, one tap away.</h2><p>Simple doors into the deeper JANVAN ecosystem.</p></div>
-    </div>
-    <div class="grid grid-4">
-      <div class="card" style="cursor:pointer;text-align:center" onclick="showPage('community')"><div class="icon">👥</div><h3>Community</h3></div>
-      <div class="card" style="cursor:pointer;text-align:center" onclick="showPage('network')"><div class="icon">🛠️</div><h3>Network</h3></div>
-      <div class="card" style="cursor:pointer;text-align:center" onclick="showPage('market')"><div class="icon">🛒</div><h3>Market</h3></div>
-      <div class="card" style="cursor:pointer;text-align:center" onclick="showPage('food')"><div class="icon">🍚</div><h3>Food</h3></div>
-      <div class="card" style="cursor:pointer;text-align:center" onclick="showPage('profile')"><div class="icon">👤</div><h3>Profile</h3></div>
-      <div class="card" style="cursor:pointer;text-align:center" onclick="showPage('profile')"><div class="icon">💰</div><h3>Wallet</h3></div>
-      <div class="card" style="cursor:pointer;text-align:center" onclick="showPage('farm');setTimeout(()=>farmTab(document.querySelector('.tabs button:nth-child(5)'),'nature'),100)"><div class="icon">🌍</div><h3>Nature</h3></div>
-      <div class="card" style="text-align:center;background:transparent;border:1px dashed #c9c4b7"><div class="icon">＋</div><h3>More inside Farm</h3></div>
-    </div>
+  <div class="grid grid-3">
+    <div class="card"><div class="eyebrow">TODAY ON YOUR FARM</div><h3>3 things need attention</h3><p>💧 Irrigation check · 🍌 Banana activity · 🌦️ Rain alert</p><button class="btn small" onclick="showPage('farm')">Open Today</button></div>
+    <div class="card"><div class="eyebrow">NEARBY</div><h3>Useful connections</h3><p>🏪 Fertilizer shop · 🚚 Carrier · 🐄 Cow dung available</p><button class="btn small" onclick="showPage('connect')">Connect</button></div>
+    <div class="card"><div class="eyebrow">MY VALUE</div><h3>Farm money & resources</h3><p>See expenses, expected income, harvest and resources connected to your farm.</p><button class="btn small" onclick="showPage('profile')">Open Wallet</button></div>
   </div>
 </section>
 
@@ -342,7 +295,7 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
   <div class="section-head"><div><div class="eyebrow">FARM CONTROL CENTRE</div><h2>Everything begins with the farm.</h2><p>One persistent farm identity that can travel across services.</p></div><button class="btn primary" onclick="openModal('farmModal')">+ Add Farm</button></div>
   <div class="grid grid-3">
     <div class="card" style="grid-column:span 2">
-      <div class="row"><div><span class="tag">ACTIVE FARM</span><h3 style="font-size:25px;margin-top:8px">Green Valley Farm</h3><p style="margin:3px 0">Kerala • India • 5.0 acres • Cultivator</p></div><div class="avatar">GV</div></div>
+      <div class="row"><div><span class="tag">ACTIVE FARM</span><h3 style="font-size:25px;margin-top:8px">Green Valley Farm</h3><p style="margin:3px 0">Kerala • India • 5.0 acres • Cultivator</p></div><div class="avatar" style="width:58px;height:58px;border-radius:50%;overflow:hidden;padding:0"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=180&q=80" alt="Farmer photo" style="width:100%;height:100%;object-fit:cover"></div></div>
       <div class="grid grid-4" style="margin-top:22px">
         <div><div class="kpi">5.0</div><div class="mini">acres</div></div>
         <div><div class="kpi">6</div><div class="mini">crop groups</div></div>
@@ -580,7 +533,7 @@ footer h3{color:white} footer p{color:#c2d1c8;font-size:13px}
 <section id="market" class="page">
   
 <div class="card" style="margin-bottom:18px">
-  <div class="section-head"><div><div class="eyebrow">VISUAL MARKETPLACE</div><h2>🛒 Agriculture Marketplace</h2><p>Large, familiar product discovery for farmers and buyers.</p></div><button class="cart-pill" onclick="openCart()">Cart (<span id="cartCountV5">0</span>)</button></div>
+  <div class="section-head"><div><div class="eyebrow">VISUAL MARKETPLACE</div><h2>🛒 Agriculture Marketplace</h2><p>Large, familiar product discovery for farmers and buyers.</p></div><button class="cart-pill" onclick="openCart()">Cart (<span id="cartCount">0</span>)</button></div>
   <div class="grid grid-4">
     <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=900&q=80" alt="Farm machinery"><div class="pbody"><strong>🚜 Farm Tractor</strong><p class="mini">Verified seller · Demo</p><div class="price">₹8,50,000</div><button class="btn green" onclick="addCart('Farm Tractor')">Add to Cart</button></div></div>
     <div class="product-card-v5"><img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=900&q=80" alt="Plants and nursery"><div class="pbody"><strong>🌱 Nendran Plants</strong><p class="mini">Nursery · Demo</p><div class="price">₹35 / plant</div><button class="btn green" onclick="addCart('Nendran Plants')">Add to Cart</button></div></div>
@@ -712,6 +665,7 @@ function showPage(id){
   const page=document.getElementById(id); if(page) page.classList.add('active');
   document.querySelectorAll('.navlinks button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
   window.scrollTo({top:0,behavior:'smooth'});
+  const nav=document.getElementById('navlinks'); if(nav && window.innerWidth<900) nav.style.display='none';
 }
 function toggleNav(){
   const n=document.getElementById('navlinks');
@@ -782,7 +736,7 @@ const JANVAN_SEARCH = [
   ['carbon','Farm → Nature Wallet / Nature Projects','farm'],
   ['nature','Farm → Nature & MRV / Organization Projects','farm'],
   ['water','Farm → water / Network → irrigation','farm'],
-  ['finance','Profile → My Wallet / Finance & Protection','profile'],
+  ['finance','Profile → My Money / Finance & Protection','profile'],
   ['insurance','Profile → Finance & Protection','profile'],
   ['youtube','Community → Farm videos','community'],
   ['machinery','Network → machinery / Farm → Machinery Register','network'],
